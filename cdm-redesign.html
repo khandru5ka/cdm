@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Центральный Детский Магазин — ЦДМ на Лубянке</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --beige: #F0EBE3;
+  --beige2: #E8DDD3;
+  --cream: #FAFAF8;
+  --green: #1D5C3A;
+  --green2: #2A7A50;
+  --green-light: #6DB38A;
+  --green-pale: #D4E8DC;
+  --dark: #1A1A18;
+  --muted: #7A7265;
+  --border: #DDD6CC;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--dark); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--cream); border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+header.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.08); }
+.header-top {
+  text-align: center; padding: 5px 0;
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+.header-main {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; padding: 0 32px; height: 60px;
+}
+.header-left { display: flex; align-items: center; gap: 20px; }
+.header-right { display: flex; align-items: center; gap: 16px; justify-content: flex-end; }
+.h-burger {
+  display: flex; flex-direction: column; gap: 4px; cursor: pointer;
+  padding: 6px; background: none; border: none;
+}
+.h-burger span { display: block; width: 22px; height: 2px; background: var(--green); transition: .2s; }
+.h-logo-wrap { text-align: center; }
+.h-logo-label { font-size: 8px; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 1px; }
+.h-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 900; color: var(--green);
+  letter-spacing: .06em; text-transform: uppercase;
+  line-height: 1.1; text-decoration: none; display: block;
+}
+.h-logo-year { font-size: 9px; letter-spacing: .3em; color: var(--muted); display: block; margin-top: 1px; }
+.h-icon-btn {
+  display: flex; align-items: center; gap: 6px; padding: 6px 0;
+  background: none; border: none; cursor: pointer; color: var(--green);
+  font-size: 12px; font-weight: 500; text-decoration: none;
+  letter-spacing: .03em; transition: opacity .2s;
+}
+.h-icon-btn:hover { opacity: .6; }
+.h-icon-btn svg { flex-shrink: 0; }
+.h-lang {
+  font-size: 11px; font-weight: 600; color: var(--green);
+  letter-spacing: .12em; border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 2px; cursor: pointer; background: none;
+}
+/* НеДетский logo in header */
+.h-nd-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px; font-weight: 700; color: var(--dark);
+  letter-spacing: .06em; text-decoration: none;
+  padding: 5px 12px; background: var(--dark); color: #F0C060;
+  border-radius: 2px; white-space: nowrap; transition: background .2s;
+}
+.h-nd-link:hover { background: #2A2418; }
+
+/* Sub-bar */
+.header-sub {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 8px 32px; border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+.sub-pill {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 99px;
+  font-size: 11px; font-weight: 500; color: var(--dark);
+  cursor: pointer; background: none; text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.sub-pill:hover { border-color: var(--green); }
+.sub-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; flex-shrink: 0; }
+
+/* Hours popup */
+.hours-popup {
+  display: none; position: absolute; top: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%); background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px 20px; box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  min-width: 220px; z-index: 300;
+}
+.hours-popup.show { display: block; }
+.hours-row { display: flex; justify-content: space-between; gap: 24px; font-size: 13px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+.hours-row:last-child { border: none; }
+.hours-day { color: var(--muted); }
+.hours-time { font-weight: 600; color: var(--dark); }
+.hours-today { font-weight: 700; color: var(--green); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 500;
+  background: var(--cream); transform: translateX(-100%);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  overflow-y: auto;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mm-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+}
+.mm-close { background: none; border: none; cursor: pointer; font-size: 24px; color: var(--dark); }
+.mm-nav { padding: 8px 0; }
+.mm-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; font-size: 15px; font-weight: 500; color: var(--dark);
+  text-decoration: none; border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.mm-item:hover { background: var(--beige); }
+.mm-item-arrow { color: var(--muted); font-size: 18px; }
+.mm-nd {
+  margin: 16px 24px; display: block; text-align: center;
+  background: var(--dark); color: #F0C060; padding: 14px;
+  font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700;
+  text-decoration: none; border-radius: 2px; letter-spacing: .04em;
+}
+.mm-socials { display: flex; gap: 12px; padding: 16px 24px; }
+.mm-social {
+  flex: 1; text-align: center; padding: 12px; border: 1px solid var(--border);
+  text-decoration: none; font-size: 13px; font-weight: 600; color: var(--green);
+  border-radius: 2px; transition: all .2s;
+}
+.mm-social:hover { background: var(--green); color: #fff; border-color: var(--green); }
+.mm-lang { display: flex; gap: 8px; padding: 12px 24px 24px; }
+.mm-lang-btn {
+  padding: 8px 16px; border: 1px solid var(--border); background: none;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em; cursor: pointer; border-radius: 2px;
+}
+.mm-lang-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* ── HEADER SPACER ── */
+.header-spacer { height: 115px; }
+
+/* ── HERO CAROUSEL ── */
+.hero { position: relative; background: var(--beige); overflow: hidden; }
+.hero-slides { position: relative; }
+.hero-slide {
+  display: none; min-height: 520px; position: relative;
+  align-items: center; overflow: hidden;
+}
+.hero-slide.active { display: flex; }
+.hero-slide-bg {
+  position: absolute; inset: 0;
+  display: flex;
+}
+.slide-left {
+  flex: 1; padding: 64px 56px; display: flex; flex-direction: column;
+  justify-content: center; position: relative; z-index: 2;
+}
+.slide-right { flex: 1; position: relative; }
+/* Slide 1 */
+.hs1 { background: #E8424A; }
+.hs2 { background: #F5C842; }
+.hs3 { background: #3A8C5C; }
+.slide-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.7); margin-bottom: 16px;
+}
+.slide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 60px); font-weight: 900; color: #fff;
+  line-height: 1.05; margin-bottom: 16px;
+}
+.slide-desc { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 32px; max-width: 380px; }
+.slide-cta {
+  display: inline-block; background: #fff; color: var(--dark);
+  padding: 12px 28px; text-decoration: none; font-size: 12px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; border-radius: 2px; transition: opacity .2s;
+}
+.slide-cta:hover { opacity: .85; }
+.slide-illustration {
+  position: absolute; right: 0; top: 0; bottom: 0; left: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 120px;
+}
+.hero-dots {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 10;
+}
+.hero-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.4); border: none; cursor: pointer; padding: 0;
+  transition: background .2s;
+}
+.hero-dot.active { background: #fff; }
+.hero-prev, .hero-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; background: rgba(255,255,255,.2); border: none; cursor: pointer;
+  width: 40px; height: 40px; border-radius: 50%; color: #fff; font-size: 18px;
+  display: flex; align-items: center; justify-content: center; transition: background .2s;
+}
+.hero-prev:hover, .hero-next:hover { background: rgba(255,255,255,.35); }
+.hero-prev { left: 20px; }
+.hero-next { right: 20px; }
+
+/* ── SECTION BASE ── */
+.section { padding: 72px 64px; }
+.sec-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 36px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--green);
+}
+.sec-link {
+  font-size: 13px; font-weight: 600; color: var(--green); text-decoration: none;
+  letter-spacing: .04em; display: flex; align-items: center; gap: 6px;
+  transition: gap .2s;
+}
+.sec-link:hover { gap: 10px; }
+
+/* ── EVENTS / AFISHA ── */
+.afisha { background: var(--cream); }
+.afisha-slider { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.afisha-slider::-webkit-scrollbar { display: none; }
+.afisha-card {
+  flex: 0 0 240px; scroll-snap-align: start; border-radius: 4px; overflow: hidden;
+  cursor: pointer; transition: transform .3s;
+}
+.afisha-card:hover { transform: translateY(-4px); }
+.afisha-arch-wrap {
+  height: 320px; border-radius: 999px 999px 0 0; overflow: hidden; position: relative;
+}
+.afisha-arch-img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 64px;
+}
+.ac1 { background: linear-gradient(160deg,#C4B8D4,#9880B8); }
+.ac2 { background: linear-gradient(160deg,#B8D4C0,#7AAD8A); }
+.ac3 { background: linear-gradient(160deg,#D4C4B0,#B09078); }
+.ac4 { background: linear-gradient(160deg,#C0C8D8,#8898B8); }
+.ac5 { background: linear-gradient(160deg,#D8C0B8,#B8887A); }
+.afisha-meta {
+  padding: 14px 4px 4px;
+}
+.afisha-date { font-size: 11px; color: var(--muted); font-weight: 500; margin-bottom: 4px; }
+.afisha-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+.afisha-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 50%);
+  padding: 20px 16px 16px;
+}
+.afisha-overlay-date { font-size: 11px; color: rgba(255,255,255,.8); margin-bottom: 4px; }
+.afisha-overlay-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: #fff; line-height: 1.25; }
+.afisha-filters { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.afisha-filter {
+  padding: 7px 16px; border: 1px solid var(--border); border-radius: 99px;
+  font-size: 12px; font-weight: 500; color: var(--muted); cursor: pointer;
+  background: none; transition: all .2s;
+}
+.afisha-filter.active, .afisha-filter:hover {
+  background: var(--green); color: #fff; border-color: var(--green);
+}
+.afisha-social-cta {
+  display: flex; gap: 12px; align-items: center; margin-top: 28px; flex-wrap: wrap;
+}
+.afisha-social-text { font-size: 13px; color: var(--muted); }
+.social-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 99px; text-decoration: none;
+  font-size: 12px; font-weight: 600; transition: opacity .2s;
+}
+.social-pill:hover { opacity: .8; }
+.sp-tg { background: #229ED9; color: #fff; }
+.sp-vk { background: #4680C2; color: #fff; }
+
+/* ── BRANDS / SHOPS ── */
+.shops { background: var(--beige); }
+.brands-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+}
+.brand-cell {
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background .2s;
+}
+.brand-cell:hover { background: #fff; }
+.brand-cell:nth-child(6n) { border-right: none; }
+.brand-name-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 700; color: var(--dark);
+  text-align: center; letter-spacing: .03em;
+}
+.brand-name-text.small { font-size: 11px; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.shop-cats { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.shop-cat { padding: 6px 14px; border: 1px solid var(--border); border-radius: 99px; font-size: 12px; font-weight: 500; color: var(--muted); cursor: pointer; background: none; transition: all .15s; }
+.shop-cat.active, .shop-cat:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* ── NEWS ── */
+.news { background: var(--cream); }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.news-card {
+  border-radius: 4px; overflow: hidden; cursor: pointer;
+  transition: transform .3s;
+}
+.news-card:hover { transform: translateY(-4px); }
+.news-visual {
+  height: 200px; display: flex; align-items: center; justify-content: center;
+  font-size: 72px; position: relative;
+}
+.nv1 { background: #B8D4E8; }
+.nv2 { background: #C8E8C0; }
+.nv3 { background: #F5C8C0; }
+.news-info { padding: 16px 0; }
+.news-date { font-size: 11px; color: var(--muted); font-weight: 500; margin-bottom: 6px; }
+.news-title { font-size: 15px; font-weight: 600; color: var(--dark); line-height: 1.4; }
+
+/* ── PROMO BANNERS ── */
+.promos { background: var(--cream); padding: 0 64px 72px; }
+.promos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.promo-banner {
+  border-radius: 4px; overflow: hidden; min-height: 240px;
+  display: flex; align-items: flex-end; padding: 32px;
+  cursor: pointer; transition: opacity .2s; position: relative;
+}
+.promo-banner:hover { opacity: .92; }
+.pb1 { background: #4A8CC8; }
+.pb2 { background: #E8B840; }
+.promo-pattern {
+  position: absolute; inset: 0; opacity: .15;
+  background-image: radial-gradient(circle, currentColor 2px, transparent 2px);
+  background-size: 24px 24px;
+}
+.promo-text { position: relative; z-index: 2; }
+.promo-eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,.75); margin-bottom: 10px; }
+.promo-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+.promo-meta { font-size: 12px; color: rgba(255,255,255,.7); }
+
+/* ── NEDETSKII ── */
+.nedetskii {
+  background: #171410; position: relative; overflow: hidden;
+}
+.nd-inner { padding: 80px 64px; position: relative; z-index: 2; }
+.nd-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-start; margin-bottom: 60px; }
+.nd-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: #F0C060; margin-bottom: 12px; }
+.nd-title { font-family: 'Playfair Display', serif; font-size: clamp(40px,4.5vw,64px); font-weight: 900; color: #F5F0E8; line-height: 1.05; margin-bottom: 18px; }
+.nd-title em { font-style: italic; color: #F0C060; }
+.nd-sub { font-size: 16px; line-height: 1.7; color: rgba(245,240,232,.55); margin-bottom: 28px; }
+.nd-address { font-size: 12px; color: rgba(245,240,232,.35); margin-bottom: 28px; letter-spacing: .04em; }
+.nd-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-nd { background: #F0C060; color: #171410; padding: 12px 28px; border-radius: 2px; border: none; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background .2s; }
+.btn-nd:hover { background: #E8B840; }
+.btn-nd-o { background: transparent; color: rgba(245,240,232,.65); border: 1px solid rgba(245,240,232,.2); padding: 11px 28px; border-radius: 2px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all .2s; }
+.btn-nd-o:hover { border-color: rgba(245,240,232,.5); color: #F5F0E8; }
+.nd-stats { display: flex; flex-direction: column; gap: 0; }
+.nd-stat { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(245,240,232,.08); }
+.nd-stat:first-child { border-top: 1px solid rgba(245,240,232,.08); }
+.nd-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; color: #F0C060; }
+.nd-desc { font-size: 13px; color: rgba(245,240,232,.45); max-width: 200px; text-align: right; line-height: 1.4; }
+.nd-cuisines { margin-bottom: 48px; }
+.nd-block-lbl { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(245,240,232,.3); font-weight: 600; margin-bottom: 14px; }
+.nd-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.nd-tag { padding: 8px 16px; border: 1px solid rgba(245,240,232,.1); border-radius: 2px; font-size: 13px; color: rgba(245,240,232,.6); cursor: pointer; text-decoration: none; transition: all .2s; }
+.nd-tag:hover { background: rgba(240,192,96,.12); border-color: rgba(240,192,96,.3); color: #F0C060; }
+.nd-events { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.nd-ev { background: rgba(245,240,232,.04); border: 1px solid rgba(245,240,232,.07); padding: 22px 18px; border-radius: 3px; text-decoration: none; display: block; transition: background .2s, transform .3s; cursor: pointer; }
+.nd-ev:hover { background: rgba(245,240,232,.07); transform: translateY(-3px); }
+.nd-ev-ico { font-size: 26px; margin-bottom: 12px; display: block; }
+.nd-ev-date { font-size: 10px; color: #F0C060; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+.nd-ev-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #F5F0E8; line-height: 1.25; }
+
+/* ── MAP ── */
+.location { background: var(--beige); }
+.location-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
+.loc-info { }
+.loc-address { font-size: 22px; font-weight: 600; color: var(--dark); margin-bottom: 16px; line-height: 1.4; }
+.loc-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.loc-row { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
+.loc-row-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.loc-row-text { color: var(--muted); line-height: 1.5; }
+.loc-row-text strong { color: var(--dark); }
+.loc-map {
+  border-radius: 4px; overflow: hidden; height: 340px;
+  background: #D4D0C8; position: relative; display: flex; align-items: center; justify-content: center;
+}
+.map-placeholder {
+  width: 100%; height: 100%; background: linear-gradient(135deg,#D8D4CC 0%,#C8C4BC 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+}
+.map-pin { font-size: 48px; }
+.map-label { font-size: 14px; font-weight: 600; color: var(--dark); }
+.map-sublabel { font-size: 12px; color: var(--muted); }
+.loc-metro { display: flex; flex-direction: column; gap: 8px; }
+.metro-line { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.metro-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.m-red { background: #E42313; }
+.m-sokolnicheskaya { background: #E42313; }
+.m-dark { background: #444F6A; }
+
+/* ── WHY US ── */
+.why { background: var(--cream); }
+.why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.why-cell { padding: 36px 28px; border-right: 1px solid var(--border); }
+.why-cell:last-child { border-right: none; }
+.why-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 8px; }
+.why-label { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.why-label strong { color: var(--dark); display: block; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+
+/* ── SOCIAL ── */
+.social-block { background: var(--green); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.sb-text { }
+.sb-label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--green-light); margin-bottom: 12px; }
+.sb-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 14px; }
+.sb-sub { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 28px; }
+.sb-socials { display: flex; gap: 12px; flex-wrap: wrap; }
+.sb-social { display: flex; align-items: center; gap: 8px; padding: 12px 20px; background: rgba(255,255,255,.1); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; border-radius: 2px; transition: background .2s; }
+.sb-social:hover { background: rgba(255,255,255,.2); }
+.sb-form { }
+.sb-form-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 16px; }
+.sb-input-row { display: flex; gap: 0; }
+.sb-input { flex: 1; padding: 14px 18px; border: none; background: rgba(255,255,255,.12); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; }
+.sb-input::placeholder { color: rgba(255,255,255,.4); }
+.sb-btn { background: #fff; color: var(--green); border: none; padding: 14px 24px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background .2s; font-family: 'Inter', sans-serif; }
+.sb-btn:hover { background: var(--green-pale); }
+.sb-note { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 10px; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 56px 64px 32px; }
+.footer-main { display: grid; grid-template-columns: 1fr auto 1fr; gap: 48px; margin-bottom: 40px; align-items: start; }
+.footer-left { }
+.footer-center { text-align: center; }
+.footer-f-logo { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: var(--green-light); line-height: 1; display: block; text-decoration: none; margin-bottom: 8px; }
+.footer-f-sub { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+.footer-right { }
+.footer-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.9); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--green-light); }
+.footer-biz-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.9); margin-bottom: 14px; }
+.footer-biz-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-biz-links a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+.footer-biz-links a:hover { color: var(--green-light); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-address { font-size: 12px; color: rgba(255,255,255,.3); }
+.footer-legal { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,.25); text-decoration: none; transition: color .2s; }
+.footer-legal a:hover { color: rgba(255,255,255,.5); }
+.footer-socials { display: flex; gap: 8px; }
+.footer-soc { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,.15); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.4); text-decoration: none; transition: all .2s; }
+.footer-soc:hover { border-color: var(--green-light); color: var(--green-light); }
+.footer-nd-link { display: block; margin-top: 20px; text-align: center; font-size: 12px; color: #F0C060; text-decoration: none; opacity: .7; transition: opacity .2s; }
+.footer-nd-link:hover { opacity: 1; }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s, transform .65s; }
+.reveal.visible { opacity: 1; transform: none; }
+.rd1 { transition-delay: .1s; }
+.rd2 { transition-delay: .2s; }
+.rd3 { transition-delay: .3s; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--beige); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header id="mainHeader">
+  <div class="header-top">Центр детских впечатлений</div>
+  <div class="header-main">
+    <div class="header-left">
+      <button class="h-burger" onclick="toggleMenu()" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://cdm-moscow.ru/shops?filter=schema" class="h-icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        План этажей
+      </a>
+      <a href="https://cdm-moscow.ru/afisha" class="h-icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Афиша
+      </a>
+    </div>
+    <div class="h-logo-wrap">
+      <span class="h-logo-label">Москва · Лубянская пл., 3</span>
+      <a href="#" class="h-logo">Центральный<br>Детский Магазин</a>
+      <span class="h-logo-year">· 1957 ·</span>
+    </div>
+    <div class="header-right">
+      <a href="#nedetskii" class="h-nd-link">НеДетский ↗</a>
+      <a href="https://cdm-moscow.ru/visit" class="h-icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Смотровая
+      </a>
+      <a href="https://cdm-moscow.ru/map" class="h-icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Контакты
+      </a>
+      <button class="h-icon-btn" onclick="document.getElementById('searchBar').classList.toggle('show')" aria-label="Поиск">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="h-lang">RU</button>
+    </div>
+  </div>
+  <div class="header-sub">
+    <div style="position:relative">
+      <button class="sub-pill" onclick="toggleHours()">
+        <span class="sub-pill-dot"></span>
+        Сегодня до 22:00
+      </button>
+      <div class="hours-popup" id="hoursPopup">
+        <div class="hours-row"><span class="hours-day">Пн – Пт</span><span class="hours-time">10:00 – 22:00</span></div>
+        <div class="hours-row"><span class="hours-day hours-today">Сб – Вс</span><span class="hours-time hours-today">10:00 – 22:00</span></div>
+        <div style="padding-top:10px;font-size:12px;color:#4CAF50;font-weight:600">● Сейчас открыто</div>
+      </div>
+    </div>
+    <a href="https://cdm-moscow.ru/map" class="sub-pill">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      Как добраться
+    </a>
+    <a href="https://cdm-moscow.ru/services/podzemnaya-parkovka" class="sub-pill">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+      Парковка
+    </a>
+    <a href="https://cdm-moscow.ru/services" class="sub-pill">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Сервисы
+    </a>
+    <a href="https://giftcard.cdm-moscow.ru/" class="sub-pill">🎁 Подарочная карта</a>
+  </div>
+  <!-- Search bar -->
+  <div id="searchBar" style="display:none;padding:12px 32px;border-top:1px solid var(--border);background:var(--cream)">
+    <div style="display:flex;gap:0;max-width:560px;margin:0 auto">
+      <input type="text" placeholder="Поиск магазинов, событий, блюд..." style="flex:1;padding:10px 16px;border:1px solid var(--border);border-right:none;font-family:Inter,sans-serif;font-size:14px;outline:none;background:var(--beige)">
+      <button style="padding:10px 20px;background:var(--green);color:#fff;border:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Найти</button>
+    </div>
+  </div>
+</header>
+
+<!-- searchBar show/hide fix -->
+<style>#searchBar.show{display:block!important}</style>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-header">
+    <a href="#" class="nav-logo" style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--green);text-decoration:none">ЦДМ</a>
+    <button class="mm-close" onclick="toggleMenu()">✕</button>
+  </div>
+  <nav class="mm-nav">
+    <a href="https://cdm-moscow.ru/shops?filter=schema" class="mm-item">План этажей <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/shops" class="mm-item">Магазины <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/restaurants" class="mm-item">Кафе и рестораны <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/entertainments" class="mm-item">Развлечения <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/afisha" class="mm-item">Афиша мероприятий <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/news" class="mm-item">Новости и акции <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/visit" class="mm-item">Смотровая · Выставка детства <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/map" class="mm-item">Контакты <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/services" class="mm-item">Сервисы <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/partners" class="mm-item">Партнёрам <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/partners" class="mm-item">Арендаторам <span class="mm-item-arrow">›</span></a>
+    <a href="#" class="mm-item">Организовать праздник <span class="mm-item-arrow">›</span></a>
+    <a href="https://cdm-moscow.ru/rules" class="mm-item">Правила <span class="mm-item-arrow">›</span></a>
+  </nav>
+  <a href="https://nedetskii.ru/" target="_blank" class="mm-nd">НеДетский — для тех, кто хочет встретиться по-взрослому ↗</a>
+  <div class="mm-socials">
+    <a href="https://vk.com/cdmmoscow" class="mm-social" target="_blank">VK</a>
+    <a href="https://t.me/cdm_moscow" class="mm-social" target="_blank">Telegram</a>
+  </div>
+  <div class="mm-lang">
+    <button class="mm-lang-btn active">RU</button>
+    <button class="mm-lang-btn">EN</button>
+    <button class="mm-lang-btn">AR</button>
+    <button class="mm-lang-btn">中文</button>
+  </div>
+</div>
+
+<div class="header-spacer"></div>
+
+<!-- ══ HERO CAROUSEL ══ -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active hs1">
+      <div class="slide-left">
+        <p class="slide-eyebrow">Весна–лето 2025</p>
+        <h1 class="slide-title">Новые<br>коллекции</h1>
+        <p class="slide-desc">Яркие образы для детей и подростков от ведущих брендов в магазинах ЦДМ</p>
+        <a href="https://cdm-moscow.ru/shops" class="slide-cta">Смотреть магазины</a>
+      </div>
+      <div class="slide-right"><div class="slide-illustration">🎨</div></div>
+    </div>
+    <div class="hero-slide hs2">
+      <div class="slide-left">
+        <p class="slide-eyebrow">Событие</p>
+        <h1 class="slide-title">Фестиваль<br>семьи</h1>
+        <p class="slide-desc">Масштабный праздник для всей семьи в Центральном Атриуме ЦДМ</p>
+        <a href="https://cdm-moscow.ru/events" class="slide-cta" style="color:var(--dark)">Узнать подробнее</a>
+      </div>
+      <div class="slide-right"><div class="slide-illustration">🎠</div></div>
+    </div>
+    <div class="hero-slide hs3">
+      <div class="slide-left">
+        <p class="slide-eyebrow">7 этаж</p>
+        <h1 class="slide-title">Смотровая<br>площадка</h1>
+        <p class="slide-desc">Панорамный вид на Лубянскую площадь и Кремль с крыши легендарного ЦДМ</p>
+        <a href="https://cdm-moscow.ru/visit" class="slide-cta">Купить билет</a>
+      </div>
+      <div class="slide-right"><div class="slide-illustration">🏙</div></div>
+    </div>
+  </div>
+  <button class="hero-prev" onclick="slideHero(-1)" aria-label="Назад">‹</button>
+  <button class="hero-next" onclick="slideHero(1)" aria-label="Вперёд">›</button>
+  <div class="hero-dots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot" onclick="goSlide(1)"></button>
+    <button class="hero-dot" onclick="goSlide(2)"></button>
+  </div>
+</section>
+
+<!-- ══ АФИША МЕРОПРИЯТИЙ ══ -->
+<section class="section afisha" id="events">
+  <div class="sec-header reveal">
+    <h2 class="sec-title">Афиша мероприятий</h2>
+    <a href="https://cdm-moscow.ru/events" class="sec-link">Смотреть все →</a>
+  </div>
+  <div class="afisha-filters reveal">
+    <button class="afisha-filter active">Все</button>
+    <button class="afisha-filter">Концерты</button>
+    <button class="afisha-filter">Мастер-классы</button>
+    <button class="afisha-filter">Открытия</button>
+    <button class="afisha-filter">Выставки</button>
+    <button class="afisha-filter">Для детей</button>
+  </div>
+  <div class="afisha-slider reveal">
+    <div class="afisha-card">
+      <div class="afisha-arch-wrap">
+        <div class="afisha-arch-img ac1">🎭</div>
+        <div class="afisha-overlay">
+          <p class="afisha-overlay-date">25 мая в 17:00</p>
+          <p class="afisha-overlay-name">Фестиваль арт-куклы</p>
+        </div>
+      </div>
+    </div>
+    <div class="afisha-card">
+      <div class="afisha-arch-wrap">
+        <div class="afisha-arch-img ac2">🌸</div>
+        <div class="afisha-overlay">
+          <p class="afisha-overlay-date">1 июня в 17:00</p>
+          <p class="afisha-overlay-name">День защиты детей</p>
+        </div>
+      </div>
+    </div>
+    <div class="afisha-card">
+      <div class="afisha-arch-wrap">
+        <div class="afisha-arch-img ac3">🎨</div>
+        <div class="afisha-overlay">
+          <p class="afisha-overlay-date">15 июня в 17:00</p>
+          <p class="afisha-overlay-name">Мастер-класс по рисованию</p>
+        </div>
+      </div>
+    </div>
+    <div class="afisha-card">
+      <div class="afisha-arch-wrap">
+        <div class="afisha-arch-img ac4">🎵</div>
+        <div class="afisha-overlay">
+          <p class="afisha-overlay-date">4 июля в 17:00</p>
+          <p class="afisha-overlay-name">Концерт в атриуме</p>
+        </div>
+      </div>
+    </div>
+    <div class="afisha-card">
+      <div class="afisha-arch-wrap">
+        <div class="afisha-arch-img ac5">🏆</div>
+        <div class="afisha-overlay">
+          <p class="afisha-overlay-date">12 июля в 12:00</p>
+          <p class="afisha-overlay-name">Колесо Фортуны</p>
+        </div>
+      </div>
+    </div>
+    <div class="afisha-card">
+      <div class="afisha-arch-wrap">
+        <div class="afisha-arch-img ac1">📮</div>
+        <div class="afisha-overlay">
+          <p class="afisha-overlay-date">Всё лето</p>
+          <p class="afisha-overlay-name">Открытка из ЦДМ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="afisha-social-cta reveal">
+    <span class="afisha-social-text">Узнавайте о событиях первыми:</span>
+    <a href="https://t.me/cdm_moscow" target="_blank" class="social-pill sp-tg">✈ Telegram</a>
+    <a href="https://vk.com/cdmmoscow" target="_blank" class="social-pill sp-vk">VK</a>
+  </div>
+</section>
+
+<!-- ══ МАГАЗИНЫ ══ -->
+<section class="section shops" id="shops">
+  <div class="sec-header reveal">
+    <h2 class="sec-title">Магазины</h2>
+    <a href="https://cdm-moscow.ru/shops" class="sec-link">Найти бренд →</a>
+  </div>
+  <div class="shop-cats reveal">
+    <button class="shop-cat active">Все</button>
+    <button class="shop-cat">Детская одежда</button>
+    <button class="shop-cat">Подростки</button>
+    <button class="shop-cat">Обувь</button>
+    <button class="shop-cat">Спорт</button>
+    <button class="shop-cat">Игрушки</button>
+    <button class="shop-cat">Книги</button>
+    <button class="shop-cat">Для всей семьи</button>
+  </div>
+  <div class="brands-grid reveal">
+    <div class="brand-cell"><span class="brand-name-text">Teewit kids<br><small style="font-size:9px;letter-spacing:.1em;font-family:Inter;text-transform:uppercase;color:var(--muted)">shop</small></span></div>
+    <div class="brand-cell"><span class="brand-name-text">RIONA</span></div>
+    <div class="brand-cell"><span class="brand-name-text small">smena</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="font-size:10px">カスタム<br>CUSTOM</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="font-style:italic;letter-spacing:.2em">mirra</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="font-size:9px">ORIGINAL<br>MARINES</span></div>
+    <div class="brand-cell"><span class="brand-name-text">PRIMIGI</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="font-size:9px;letter-spacing:.08em">ETE · CHILDREN</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="letter-spacing:.06em">Choupette</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="letter-spacing:.06em">L'Окситан</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="font-size:10px;letter-spacing:.04em">NATURAPURA</span></div>
+    <div class="brand-cell"><span class="brand-name-text small" style="letter-spacing:.03em;font-size:12px">motherbear</span></div>
+  </div>
+  <div style="text-align:center;margin-top:32px" class="reveal">
+    <a href="https://cdm-moscow.ru/shops" style="display:inline-flex;align-items:center;gap:8px;padding:12px 32px;border:1px solid var(--green);color:var(--green);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:all .2s" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--green)'">Все магазины</a>
+  </div>
+</section>
+
+<!-- ══ НОВОСТИ ══ -->
+<section class="section news" id="news">
+  <div class="sec-header reveal">
+    <h2 class="sec-title">Новости</h2>
+    <a href="https://cdm-moscow.ru/news" class="sec-link">Все новости →</a>
+  </div>
+  <div class="news-grid">
+    <div class="news-card reveal">
+      <div class="news-visual nv1">🎡</div>
+      <div class="news-info">
+        <p class="news-date">6 апреля</p>
+        <p class="news-title">Открытие смотровой площадки</p>
+      </div>
+    </div>
+    <div class="news-card reveal rd1">
+      <div class="news-visual nv2">🛴</div>
+      <div class="news-info">
+        <p class="news-date">16 июня</p>
+        <p class="news-title">Детский утренник в ЦДМ</p>
+      </div>
+    </div>
+    <div class="news-card reveal rd2">
+      <div class="news-visual nv3">🎄</div>
+      <div class="news-info">
+        <p class="news-date">26 декабря</p>
+        <p class="news-title">Детский новогодний утренник</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ПРОМО-БАННЕРЫ ══ -->
+<div class="promos">
+  <div class="promos-grid">
+    <div class="promo-banner pb1 reveal" onclick="window.open('https://cdm-moscow.ru/events','_blank')">
+      <div class="promo-pattern" style="color:#fff"></div>
+      <div class="promo-text">
+        <p class="promo-eyebrow">Театральный атриум</p>
+        <h3 class="promo-title">Сказки Пушкина<br>оживают</h3>
+        <p class="promo-meta">Пушкинские недели · с 7 по 8 июня</p>
+      </div>
+    </div>
+    <div class="promo-banner pb2 reveal rd1" onclick="window.open('https://cdm-moscow.ru/events','_blank')">
+      <div class="promo-pattern" style="color:#fff"></div>
+      <div class="promo-text">
+        <p class="promo-eyebrow">Большой праздник</p>
+        <h3 class="promo-title">Фестиваль<br>семьи</h3>
+        <p class="promo-meta">8 июня · с 12:00 до 19:00</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ НЕДЕТСКИЙ ══ -->
+<section class="nedetskii" id="nedetskii">
+  <div class="nd-inner">
+    <div class="nd-top">
+      <div class="reveal">
+        <p class="nd-label">Гастрофудхолл · Театральный пр-д, 5/1</p>
+        <h2 class="nd-title">«НеДетский»<br><em>Встречаемся<br>по-взрослому</em></h2>
+        <p class="nd-sub">Пространство, где гастрономия, культура и эмоции встречаются под одной крышей. Десятки корнеров, фермерские лавки, живая сцена и события каждую неделю.</p>
+        <p class="nd-address">📍 Москва · Театральный пр-д, 5/1 · м. Охотный ряд, Театральная · 10:00 — 22:00</p>
+        <div class="nd-btns">
+          <a href="https://nedetskii.ru/" target="_blank" class="btn-nd">Перейти на сайт →</a>
+          <a href="https://nedetskii.ru/corners/" target="_blank" class="btn-nd-o">Все корнеры</a>
+        </div>
+      </div>
+      <div class="nd-stats reveal rd1">
+        <div class="nd-stat"><span class="nd-num">40+</span><span class="nd-desc">гастрономических корнеров и фермерских лавок</span></div>
+        <div class="nd-stat"><span class="nd-num">11</span><span class="nd-desc">кухонь мира — от грузинской до японской</span></div>
+        <div class="nd-stat"><span class="nd-num">1</span><span class="nd-desc">живая сцена с концертами и вечеринками</span></div>
+        <div class="nd-stat" style="border-bottom:none"><span class="nd-num">7/7</span><span class="nd-desc">дней в неделю · события каждые выходные</span></div>
+      </div>
+    </div>
+    <div class="nd-cuisines reveal">
+      <p class="nd-block-lbl">Кухни мира</p>
+      <div class="nd-tags">
+        <a href="https://nedetskii.ru/corners/?kitchen=34" target="_blank" class="nd-tag">🍜 Азиатская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=6" target="_blank" class="nd-tag">🍔 Американская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=32" target="_blank" class="nd-tag">🍲 Вьетнамская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=31" target="_blank" class="nd-tag">🫒 Греческая</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=7" target="_blank" class="nd-tag">🥩 Грузинская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=8" target="_blank" class="nd-tag">🍝 Итальянская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=28" target="_blank" class="nd-tag">🍜 Корейская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=10" target="_blank" class="nd-tag">🥘 Паназиатская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=30" target="_blank" class="nd-tag">🌶 Тайская</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=33" target="_blank" class="nd-tag">🫕 Турецкая</a>
+        <a href="https://nedetskii.ru/corners/?kitchen=29" target="_blank" class="nd-tag">🍱 Японская</a>
+      </div>
+    </div>
+    <div class="reveal" style="margin-bottom:16px"><p class="nd-block-lbl">Ближайшие события</p></div>
+    <div class="nd-events">
+      <a href="https://nedetskii.ru/events/may-v-nedetskom/" target="_blank" class="nd-ev reveal">
+        <span class="nd-ev-ico">🌿</span><p class="nd-ev-date">Май 2026</p><p class="nd-ev-title">Май в «НеДетском»</p>
+      </a>
+      <a href="https://nedetskii.ru/events/nedetskiy-kh-rml/" target="_blank" class="nd-ev reveal rd1">
+        <span class="nd-ev-ico">🎵</span><p class="nd-ev-date">24 Апр 2026</p><p class="nd-ev-title">НеДетский × RML</p>
+      </a>
+      <a href="https://nedetskii.ru/events/muzykalnoe-bingo-/" target="_blank" class="nd-ev reveal rd2">
+        <span class="nd-ev-ico">🎲</span><p class="nd-ev-date">Регулярно</p><p class="nd-ev-title">Музыкальное бинго</p>
+      </a>
+      <a href="https://nedetskii.ru/events/" target="_blank" class="nd-ev reveal rd3" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+        <span class="nd-ev-ico">→</span><p class="nd-ev-title" style="color:rgba(245,240,232,.35);font-size:13px">Вся афиша событий</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ РАСПОЛОЖЕНИЕ ══ -->
+<section class="section location" id="map">
+  <div class="sec-header reveal">
+    <h2 class="sec-title">Расположение</h2>
+    <a href="https://cdm-moscow.ru/map" class="sec-link">Как добраться →</a>
+  </div>
+  <div class="location-grid">
+    <div class="loc-info reveal">
+      <p class="loc-address">Москва,<br>Лубянская площадь, 3</p>
+      <div class="loc-rows">
+        <div class="loc-row">
+          <span class="loc-row-icon">🕐</span>
+          <span class="loc-row-text"><strong>Ежедневно 10:00 – 22:00</strong></span>
+        </div>
+        <div class="loc-row">
+          <span class="loc-row-icon">🅿</span>
+          <span class="loc-row-text">Подземная парковка — <strong>700 руб./час</strong></span>
+        </div>
+        <div class="loc-row">
+          <span class="loc-row-icon">📞</span>
+          <span class="loc-row-text">Стойка информации и бюро находок на 1 этаже</span>
+        </div>
+      </div>
+      <div class="loc-metro">
+        <div class="metro-line">
+          <span class="metro-dot m-red"></span>
+          <span style="font-size:14px;font-weight:600;color:var(--dark)">м. Лубянка</span>
+          <span style="font-size:13px;color:var(--muted);margin-left:4px">Сокольническая линия · 2 мин пешком</span>
+        </div>
+        <div class="metro-line">
+          <span class="metro-dot m-dark"></span>
+          <span style="font-size:14px;font-weight:600;color:var(--dark)">м. Кузнецкий мост</span>
+          <span style="font-size:13px;color:var(--muted);margin-left:4px">Таганско-Краснопресненская · 5 мин</span>
+        </div>
+      </div>
+    </div>
+    <div class="loc-map reveal rd1">
+      <div class="map-placeholder">
+        <span class="map-pin">📍</span>
+        <span class="map-label">ЦДМ на Лубянке</span>
+        <span class="map-sublabel">Лубянская площадь, 3</span>
+        <a href="https://yandex.ru/maps/213/moscow/?ll=37.625696%2C55.758537&z=16" target="_blank" style="margin-top:12px;padding:10px 24px;background:var(--green);color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">Открыть карту</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ПОЧЕМУ МЫ ══ -->
+<section class="section why" id="why" style="padding-top:0">
+  <div class="sec-header reveal" style="margin-bottom:28px">
+    <h2 class="sec-title">Центр впечатлений</h2>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-cell">
+      <p class="why-num">73 000</p>
+      <p class="why-label"><strong>м² общей площади</strong>7 этажей легендарного здания в сердце Москвы</p>
+    </div>
+    <div class="why-cell">
+      <p class="why-num">150+</p>
+      <p class="why-label"><strong>магазинов и арендаторов</strong>Детская и подростковая мода, игрушки, книги, спорт</p>
+    </div>
+    <div class="why-cell">
+      <p class="why-num">1957</p>
+      <p class="why-label"><strong>год основания</strong>Легендарный ЦДМ — флагман детской индустрии России</p>
+    </div>
+    <div class="why-cell">
+      <p class="why-num">5M+</p>
+      <p class="why-label"><strong>посетителей в год</strong>Семьи, туристы, жители Москвы и гости столицы</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ СОЦСЕТИ + EMAIL ══ -->
+<section class="social-block">
+  <div class="sb-text reveal">
+    <p class="sb-label">Наши соцсети</p>
+    <h2 class="sb-title">Будьте<br>в курсе</h2>
+    <p class="sb-sub">Анонсы мероприятий, открытие новых магазинов, акции и вдохновение — всё это в нашем Telegram и VK.</p>
+    <div class="sb-socials">
+      <a href="https://t.me/cdm_moscow" target="_blank" class="sb-social">✈ Telegram-канал</a>
+      <a href="https://vk.com/cdmmoscow" target="_blank" class="sb-social">VK-сообщество</a>
+    </div>
+  </div>
+  <div class="sb-form reveal rd1">
+    <p class="sb-form-title">Подписаться на рассылку</p>
+    <div class="sb-input-row">
+      <input class="sb-input" type="email" placeholder="Ваш e-mail">
+      <button class="sb-btn">Подписаться</button>
+    </div>
+    <p class="sb-note">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-left">
+      <p class="footer-biz-title">Для бизнеса</p>
+      <ul class="footer-biz-links">
+        <li><a href="https://cdm-moscow.ru/partners">Арендаторам</a></li>
+        <li><a href="https://cdm-moscow.ru/partners">Партнёрам</a></li>
+        <li><a href="#">Реклама в ЦДМ</a></li>
+        <li><a href="#">Организовать мероприятие</a></li>
+        <li><a href="#">Сотрудничество</a></li>
+        <li><a href="#">Пресс-служба</a></li>
+      </ul>
+    </div>
+    <div class="footer-center">
+      <a href="#" class="footer-f-logo">ЦДМ</a>
+      <p class="footer-f-sub">Центральный Детский Магазин</p>
+      <div class="footer-socials" style="justify-content:center;margin-top:16px">
+        <a href="https://vk.com/cdmmoscow" class="footer-soc" target="_blank">VK</a>
+        <a href="https://t.me/cdm_moscow" class="footer-soc" target="_blank">TG</a>
+      </div>
+      <a href="https://nedetskii.ru/" target="_blank" class="footer-nd-link">А для взрослых встреч — НеДетский ↗</a>
+    </div>
+    <div class="footer-right">
+      <div class="footer-cols">
+        <div>
+          <p class="footer-col-title">Посетителям</p>
+          <ul class="footer-links">
+            <li><a href="https://cdm-moscow.ru/shops?filter=schema">Схема этажей</a></li>
+            <li><a href="https://cdm-moscow.ru/shops">Магазины</a></li>
+            <li><a href="https://cdm-moscow.ru/afisha">Афиша</a></li>
+            <li><a href="https://cdm-moscow.ru/restaurants">Рестораны</a></li>
+            <li><a href="#">Фотогалерея</a></li>
+            <li><a href="https://cdm-moscow.ru/map">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Сервисы</p>
+          <ul class="footer-links">
+            <li><a href="https://cdm-moscow.ru/services/podzemnaya-parkovka">Парковка</a></li>
+            <li><a href="https://giftcard.cdm-moscow.ru/">Подарочная карта</a></li>
+            <li><a href="https://cdm-moscow.ru/visit">Смотровая</a></li>
+            <li><a href="https://audioguide.cdm-moscow.ru/">Аудиогид</a></li>
+            <li><a href="https://cdm-moscow.ru/services">Все сервисы</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">О нас</p>
+          <ul class="footer-links">
+            <li><a href="https://cdm-moscow.ru/news">Новости</a></li>
+            <li><a href="https://cdm-moscow.ru/attractions">О ЦДМ</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Обратная связь</a></li>
+            <li><a href="https://cdm-moscow.ru/rules">Правила</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-address">📍 Москва, Лубянская площадь, 3 · м. Лубянка · Ежедневно 10:00 – 22:00</p>
+    <div class="footer-legal">
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Обработка персональных данных</a>
+      <span style="font-size:12px;color:rgba(255,255,255,.2)">© 2025 ЦДМ на Лубянке</span>
+      <span style="font-size:12px;color:rgba(255,255,255,.2)">Дизайн создан в Супрематике</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Header scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('mainHeader').classList.toggle('scrolled', scrollY > 60);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+
+// Hours popup
+function toggleHours() {
+  document.getElementById('hoursPopup').classList.toggle('show');
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#hoursPopup') && !e.target.closest('.sub-pill')) {
+    document.getElementById('hoursPopup').classList.remove('show');
+  }
+});
+
+// Hero carousel
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+
+function goSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+function slideHero(dir) { goSlide(currentSlide + dir); }
+
+// Auto-advance
+setInterval(() => slideHero(1), 5000);
+
+// Afisha filters
+document.querySelectorAll('.afisha-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.afisha-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Shop cats
+document.querySelectorAll('.shop-cat').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.shop-cat').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
