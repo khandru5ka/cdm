@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЦДМ — Все макеты</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --beige: #F0EBE3; --beige2: #E4DDD4; --cream: #FAFAF8;
+  --green: #1D5C3A; --green2: #2A7A50; --green-light: #6DB38A;
+  --green-pale: #D4E8DC; --dark: #1A1A18; --muted: #7A7265; --border: #DDD6CC;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--dark); font-family: 'Inter', sans-serif; }
+
+/* ── HEADER ── */
+header {
+  background: var(--dark); padding: 0 56px;
+  display: flex; align-items: center; justify-content: space-between; height: 72px;
+  position: sticky; top: 0; z-index: 100;
+}
+.h-logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--green-light); }
+.h-meta { font-size: 12px; color: rgba(255,255,255,.35); letter-spacing: .08em; }
+.h-count { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); padding: 4px 12px; border-radius: 99px; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--green); padding: 72px 56px 64px;
+  display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+}
+.hero-label { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: var(--green-light); margin-bottom: 14px; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(44px, 5vw, 72px); font-weight: 900; color: #fff; line-height: 1.02; margin-bottom: 16px; }
+.hero-title em { font-style: italic; color: var(--green-light); }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,.6); max-width: 520px; line-height: 1.65; }
+.hero-stats { display: flex; flex-direction: column; gap: 0; min-width: 200px; }
+.hero-stat { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.hero-stat:first-child { border-top: 1px solid rgba(255,255,255,.1); }
+.hero-stat-n { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
+.hero-stat-l { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+
+/* ── SEARCH ── */
+.search-bar {
+  background: var(--beige); border-bottom: 1px solid var(--border);
+  padding: 16px 56px; display: flex; gap: 12px; align-items: center;
+  position: sticky; top: 72px; z-index: 90;
+}
+.search-input {
+  flex: 1; max-width: 400px; padding: 9px 16px;
+  border: 1px solid var(--border); background: #fff;
+  font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
+  transition: border-color .2s;
+}
+.search-input:focus { border-color: var(--green); }
+.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 99px;
+  font-size: 11px; font-weight: 600; color: var(--muted); cursor: pointer;
+  background: none; transition: all .15s; white-space: nowrap;
+}
+.pill.active, .pill:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* ── SECTION ── */
+.section { padding: 56px 56px 0; }
+.section:last-of-type { padding-bottom: 72px; }
+.section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--green); }
+.section-count { font-size: 12px; color: var(--muted); background: var(--beige2); padding: 3px 10px; border-radius: 99px; font-weight: 500; }
+
+/* ── CARDS ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+.page-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 6px;
+  overflow: hidden; cursor: pointer; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, border-color .25s;
+}
+.page-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,.1); border-color: var(--green); }
+
+.card-thumb {
+  height: 140px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; position: relative; flex-shrink: 0;
+}
+.card-thumb-label {
+  position: absolute; top: 12px; left: 12px;
+  font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 2px;
+}
+.card-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+.card-tag { font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--green2); margin-bottom: 6px; }
+.card-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 8px; }
+.card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; flex: 1; margin-bottom: 16px; }
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px; border-top: 1px solid var(--border);
+}
+.card-file { font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace; }
+.card-arrow {
+  width: 28px; height: 28px; background: var(--green); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 13px; transition: background .2s;
+}
+.page-card:hover .card-arrow { background: var(--green2); }
+
+/* ── FEATURED (main page) ── */
+.featured-card {
+  background: var(--green); border-radius: 6px; overflow: hidden;
+  cursor: pointer; text-decoration: none; color: inherit;
+  display: grid; grid-template-columns: 1fr auto;
+  transition: transform .25s, box-shadow .25s; margin-bottom: 16px;
+}
+.featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(29,92,58,.25); }
+.featured-body { padding: 36px 40px; }
+.featured-super { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--green-light); margin-bottom: 12px; }
+.featured-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+.featured-desc { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 24px; max-width: 480px; }
+.featured-cta { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--green); padding: 11px 24px; border-radius: 2px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.featured-visual { background: #14402A; min-width: 200px; display: flex; align-items: center; justify-content: center; font-size: 72px; padding: 40px; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); margin: 0 56px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); margin-top: 72px;
+  padding: 32px 56px; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-text { font-size: 13px; color: rgba(255,255,255,.3); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,.25); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--green-light); }
+
+/* ── CATEGORY COLORS ── */
+.bg-main   { background: linear-gradient(135deg, #D4E8DC, #A8D4BC); }
+.bg-shops  { background: linear-gradient(135deg, #E8DDD4, #D4C4B0); }
+.bg-events { background: linear-gradient(135deg, #D4D0E8, #B8B0D4); }
+.bg-food   { background: linear-gradient(135deg, #E8D4CC, #D4B0A4); }
+.bg-info   { background: linear-gradient(135deg, #D4DCE8, #B0BCD4); }
+.bg-biz    { background: linear-gradient(135deg, #1A1812, #2A2418); }
+.bg-hist   { background: linear-gradient(135deg, #E8E0D0, #D4C8B0); }
+
+.tag-main  { background: rgba(29,92,58,.12); color: var(--green); }
+.tag-shops { background: rgba(150,100,50,.12); color: #7A5030; }
+.tag-events{ background: rgba(80,60,150,.12); color: #503C96; }
+.tag-food  { background: rgba(150,60,40,.12); color: #963C28; }
+.tag-info  { background: rgba(40,80,150,.12); color: #284096; }
+.tag-biz   { background: rgba(240,192,96,.15); color: #C8A040; }
+.tag-hist  { background: rgba(100,80,40,.12); color: #644828; }
+
+/* ── HIDDEN ── */
+.page-card.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-logo">ЦДМ</div>
+  <div class="h-meta">Прототип сайта · Все макеты страниц</div>
+  <div class="h-count">16 страниц</div>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div>
+    <p class="hero-label">Центральный Детский Магазин · Редизайн сайта</p>
+    <h1 class="hero-title">Все макеты<br><em>страниц</em></h1>
+    <p class="hero-sub">Полный набор HTML-прототипов для редизайна сайта ЦДМ. Кликайте на карточку, чтобы открыть страницу.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-n">1</div><div class="hero-stat-l">главная страница</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">8</div><div class="hero-stat-l">разделов для посетителей</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">4</div><div class="hero-stat-l">страницы для бизнеса</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">3</div><div class="hero-stat-l">шаблона карточек</div></div>
+  </div>
+</div>
+
+<!-- ── SEARCH + FILTERS ── -->
+<div class="search-bar">
+  <input class="search-input" id="searchInput" placeholder="Поиск по названию страницы..." oninput="filterCards()">
+  <div class="filter-pills">
+    <button class="pill active" onclick="filterByTag('all', this)">Все</button>
+    <button class="pill" onclick="filterByTag('main', this)">Главная</button>
+    <button class="pill" onclick="filterByTag('shops', this)">Магазины</button>
+    <button class="pill" onclick="filterByTag('events', this)">Афиша</button>
+    <button class="pill" onclick="filterByTag('food', this)">Еда</button>
+    <button class="pill" onclick="filterByTag('info', this)">Инфо</button>
+    <button class="pill" onclick="filterByTag('biz', this)">Бизнес</button>
+    <button class="pill" onclick="filterByTag('hist', this)">История</button>
+  </div>
+</div>
+
+<!-- ══ ГЛАВНАЯ СТРАНИЦА ══ -->
+<div class="section" data-tag="main">
+  <div class="section-header">
+    <h2 class="section-title">Главная страница</h2>
+    <span class="section-count">1 страница</span>
+  </div>
+  <a href="cdm-redesign.html" class="featured-card" data-tag="main" data-title="главная страница главная cdm redesign">
+    <div class="featured-body">
+      <p class="featured-super">Главная · Весь сайт</p>
+      <h3 class="featured-title">Центральный Детский<br>Магазин — главная</h3>
+      <p class="featured-desc">Хедер с полной навигацией, герой-карусель, афиша событий, магазины, новости, промо-баннеры, НеДетский, смотровая, музей детства, кинотеатр, расположение, соцсети, футер.</p>
+      <span class="featured-cta">Открыть страницу →</span>
+    </div>
+    <div class="featured-visual">🏛</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ КАТАЛОГ И НАВИГАЦИЯ ══ -->
+<div class="section" data-tag="shops">
+  <div class="section-header">
+    <h2 class="section-title">Каталог и навигация</h2>
+    <span class="section-count">3 страницы</span>
+  </div>
+  <div class="cards">
+
+    <a href="floors.html" class="page-card" data-tag="shops" data-title="план этажей floors схема арендаторы">
+      <div class="card-thumb bg-shops">
+        🗺
+        <span class="card-thumb-label tag-shops">Навигация</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Навигация</p>
+        <h3 class="card-title">План этажей</h3>
+        <p class="card-desc">Интерактивная схема 7 этажей с переключалкой, фильтрами по этажу / алфавиту / категориям, поиском и кликабельными блоками арендаторов.</p>
+        <div class="card-footer">
+          <span class="card-file">floors.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="shops.html" class="page-card" data-tag="shops" data-title="магазины shops бренды каталог фильтр">
+      <div class="card-thumb bg-shops">
+        🛍
+        <span class="card-thumb-label tag-shops">Каталог</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Каталог</p>
+        <h3 class="card-title">Магазины</h3>
+        <p class="card-desc">Список всех магазинов с поиском, фильтрацией по категориям (детская одежда, обувь, спорт, игрушки, книги) и карточками брендов.</p>
+        <div class="card-footer">
+          <span class="card-file">shops.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="shop-detail.html" class="page-card" data-tag="shops" data-title="страница магазина shop detail шаблон карточка">
+      <div class="card-thumb bg-shops">
+        👗
+        <span class="card-thumb-label tag-shops">Шаблон</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Шаблон · Карточка магазина</p>
+        <h3 class="card-title">Страница магазина</h3>
+        <p class="card-desc">Шаблон карточки арендатора: лого, категория, этаж, часы, описание, фотогалерея, мероприятия магазина, кнопка «показать на схеме».</p>
+        <div class="card-footer">
+          <span class="card-file">shop-detail.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ СОБЫТИЯ И НОВОСТИ ══ -->
+<div class="section" data-tag="events">
+  <div class="section-header">
+    <h2 class="section-title">События и новости</h2>
+    <span class="section-count">3 страницы</span>
+  </div>
+  <div class="cards">
+
+    <a href="afisha.html" class="page-card" data-tag="events" data-title="афиша мероприятий события afisha концерты мастер-классы">
+      <div class="card-thumb bg-events">
+        🎭
+        <span class="card-thumb-label tag-events">Афиша</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">События</p>
+        <h3 class="card-title">Афиша мероприятий</h3>
+        <p class="card-desc">Список всех событий с фильтрами по типу (концерты, мастер-классы, выставки, открытия), поиском и CTA в Telegram / VK.</p>
+        <div class="card-footer">
+          <span class="card-file">afisha.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="event-detail.html" class="page-card" data-tag="events" data-title="страница мероприятия event detail шаблон карточка события">
+      <div class="card-thumb bg-events">
+        🎪
+        <span class="card-thumb-label tag-events">Шаблон</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Шаблон · Карточка события</p>
+        <h3 class="card-title">Страница мероприятия</h3>
+        <p class="card-desc">Шаблон страницы события: дата, место, описание, участвующие магазины, кнопка «добавить в календарь».</p>
+        <div class="card-footer">
+          <span class="card-file">event-detail.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="news.html" class="page-card" data-tag="events" data-title="новости акции news акции распродажа открытия">
+      <div class="card-thumb bg-events">
+        📰
+        <span class="card-thumb-label tag-events">Новости</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Контент</p>
+        <h3 class="card-title">Новости и акции</h3>
+        <p class="card-desc">Лента новостей с фильтрами по типу: новости ЦДМ, акции магазинов, открытия, партнёрские материалы.</p>
+        <div class="card-footer">
+          <span class="card-file">news.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ ПОСЕТИТЕЛЯМ ══ -->
+<div class="section" data-tag="info">
+  <div class="section-header">
+    <h2 class="section-title">Посетителям</h2>
+    <span class="section-count">3 страницы</span>
+  </div>
+  <div class="cards">
+
+    <a href="contacts.html" class="page-card" data-tag="info" data-title="контакты адрес contacts карта метро часы работы">
+      <div class="card-thumb bg-info">
+        📍
+        <span class="card-thumb-label tag-info">Инфо</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Информация</p>
+        <h3 class="card-title">Контакты и адрес</h3>
+        <p class="card-desc">Адрес, режим работы со статусом «открыто/закрыто», карта Яндекс, схема метро, email, телефон, фотогалерея.</p>
+        <div class="card-footer">
+          <span class="card-file">contacts.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="services.html" class="page-card" data-tag="info" data-title="сервисы services банкоматы парковка браслеты гардероб wi-fi">
+      <div class="card-thumb bg-info">
+        🛎
+        <span class="card-thumb-label tag-info">Сервисы</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Сервисы</p>
+        <h3 class="card-title">Сервисы ЦДМ</h3>
+        <p class="card-desc">12 сервисов: банкоматы, КМиР, стойка информации, упаковка подарков, powerbank, гардероб, браслеты непотеряшки, парковка, Wi-Fi, аудиогид.</p>
+        <div class="card-footer">
+          <span class="card-file">services.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="observatory.html" class="page-card" data-tag="info" data-title="смотровая площадка музей детства выставка аудиогид билеты">
+      <div class="card-thumb bg-main">
+        🏙
+        <span class="card-thumb-label tag-main">7 этаж</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">7 этаж</p>
+        <h3 class="card-title">Смотровая + Музей детства</h3>
+        <p class="card-desc">Смотровая площадка: билеты, часы, правила посещения, форма покупки. Выставка детства: аудиогид, архивные материалы.</p>
+        <div class="card-footer">
+          <span class="card-file">observatory.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ ЕДА ══ -->
+<div class="section" data-tag="food">
+  <div class="section-header">
+    <h2 class="section-title">Гастрономия</h2>
+    <span class="section-count">На главной странице</span>
+  </div>
+  <div class="cards">
+
+    <a href="cdm-redesign.html#nedetskii" class="page-card" data-tag="food" data-title="недетский nedetskii гастрофудхолл кухни корнеры">
+      <div class="card-thumb" style="background:#1A1812">
+        🍽
+        <span class="card-thumb-label" style="background:rgba(240,192,96,.2);color:#F0C060">НеДетский</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag" style="color:#C8A040">Гастрофудхолл</p>
+        <h3 class="card-title">«НеДетский»</h3>
+        <p class="card-desc">Блок на главной: 40+ корнеров, 11 кухонь мира, живая сцена, события. Переход на nedetskii.ru. Театральный пр-д, 5/1.</p>
+        <div class="card-footer">
+          <span class="card-file">cdm-redesign.html#nedetskii</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cdm-redesign.html#cinema" class="page-card" data-tag="food" data-title="кинотеатр cinema кино сеансы билеты">
+      <div class="card-thumb" style="background:#0F0D0B">
+        🎬
+        <span class="card-thumb-label" style="background:rgba(200,168,74,.15);color:#C8A84A">7 этаж</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag" style="color:#A08030">Кинотеатр</p>
+        <h3 class="card-title">Кинотеатр ЦДМ</h3>
+        <p class="card-desc">Блок на главной: расписание сеансов, 4 фильма с тайм-слотами и возрастными ограничениями, кнопка покупки билетов.</p>
+        <div class="card-footer">
+          <span class="card-file">cdm-redesign.html#cinema</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ ДЛЯ БИЗНЕСА ══ -->
+<div class="section" data-tag="biz">
+  <div class="section-header">
+    <h2 class="section-title">Для бизнеса</h2>
+    <span class="section-count">4 страницы</span>
+  </div>
+  <div class="cards">
+
+    <a href="tenants.html" class="page-card" data-tag="biz" data-title="арендаторам tenants аренда отдел контакты">
+      <div class="card-thumb bg-biz">
+        🏬
+        <span class="card-thumb-label tag-biz">B2B</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Аренда</p>
+        <h3 class="card-title">Арендаторам</h3>
+        <p class="card-desc">УТП ЦДМ как арендодателя: трафик, расположение, аудитория. Контакты отдела аренды, ссылка на портал арендаторов, галерея.</p>
+        <div class="card-footer">
+          <span class="card-file">tenants.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="partners.html" class="page-card" data-tag="biz" data-title="партнёрам partners форма обратной связи презентация">
+      <div class="card-thumb bg-biz">
+        🤝
+        <span class="card-thumb-label tag-biz">B2B</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Партнёрство</p>
+        <h3 class="card-title">Партнёрам</h3>
+        <p class="card-desc">Форма обратной связи (все поля обязательны), кнопка «Презентация ЦДМ PDF», контакты по направлениям, галерея.</p>
+        <div class="card-footer">
+          <span class="card-file">partners.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="advertising.html" class="page-card" data-tag="biz" data-title="реклама advertising рекламные поверхности форматы">
+      <div class="card-thumb bg-biz">
+        📺
+        <span class="card-thumb-label tag-biz">B2B</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Реклама</p>
+        <h3 class="card-title">Реклама в ЦДМ</h3>
+        <p class="card-desc">30+ поверхностей, 8 форматов, 5M+ посетителей. Описание форматов: digital-экраны, промозоны, баннеры, партнёрства. Контакты по направлениям.</p>
+        <div class="card-footer">
+          <span class="card-file">advertising.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="events-b2b.html" class="page-card" data-tag="biz" data-title="мероприятия бизнес b2b events атриум площадки">
+      <div class="card-thumb bg-biz">
+        🎪
+        <span class="card-thumb-label tag-biz">B2B</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Ивенты</p>
+        <h3 class="card-title">Мероприятия для бизнеса</h3>
+        <p class="card-desc">Площадки ЦДМ: Центральный атриум 1200 м², смотровая, арт-пространство. Фотоальбомы с событий. Email-контакты по партнёрствам и оргкомитету.</p>
+        <div class="card-footer">
+          <span class="card-file">events-b2b.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ ОБ ОБЪЕКТЕ ══ -->
+<div class="section" data-tag="hist">
+  <div class="section-header">
+    <h2 class="section-title">Об объекте</h2>
+    <span class="section-count">2 страницы</span>
+  </div>
+  <div class="cards">
+
+    <a href="history.html" class="page-card" data-tag="hist" data-title="история history таймлайн архив 1957 реконструкция">
+      <div class="card-thumb bg-hist">
+        🏛
+        <span class="card-thumb-label tag-hist">История</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">История</p>
+        <h3 class="card-title">История ЦДМ</h3>
+        <p class="card-desc">Слайдер архивных фотографий + таймлайн по десятилетиям: Лубянский пассаж (1893) → открытие ЦДМ (1957) → реконструкция → сегодня.</p>
+        <div class="card-footer">
+          <span class="card-file">history.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="party.html" class="page-card" data-tag="hist" data-title="организовать праздник party день рождения форма заявка">
+      <div class="card-thumb bg-main">
+        🎂
+        <span class="card-thumb-label tag-main">Сервис</span>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Сервис</p>
+        <h3 class="card-title">Организовать праздник</h3>
+        <p class="card-desc">Форматы: день рождения, выпускной, тематическая вечеринка. Форма заявки с датой, количеством детей, типом события и комментарием.</p>
+        <div class="card-footer">
+          <span class="card-file">party.html</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-text">ЦДМ на Лубянке · Прототип сайта · 16 страниц</span>
+  <div class="footer-links">
+    <a href="cdm-redesign.html">Главная</a>
+    <a href="floors.html">Этажи</a>
+    <a href="afisha.html">Афиша</a>
+    <a href="contacts.html">Контакты</a>
+  </div>
+</footer>
+
+<script>
+let activeTag = 'all';
+
+function filterByTag(tag, btn) {
+  activeTag = tag;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function filterCards() { applyFilters(); }
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  document.querySelectorAll('.page-card, .featured-card').forEach(card => {
+    const tagMatch = activeTag === 'all' || card.dataset.tag === activeTag;
+    const titleMatch = !q || (card.dataset.title || '').includes(q) || card.innerText.toLowerCase().includes(q);
+    card.classList.toggle('hidden', !(tagMatch && titleMatch));
+  });
+  // Hide section headers if all cards in section are hidden
+  document.querySelectorAll('.section').forEach(sec => {
+    const cards = sec.querySelectorAll('.page-card, .featured-card');
+    if (cards.length === 0) return;
+    const allHidden = [...cards].every(c => c.classList.contains('hidden'));
+    sec.style.display = allHidden ? 'none' : '';
+  });
+  document.querySelectorAll('.divider').forEach((d, i) => {
+    d.style.display = '';
+  });
+}
+</script>
+</body>
+</html>
