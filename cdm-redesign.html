@@ -474,6 +474,146 @@ footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 56px 64p
 .rd2 { transition-delay: .2s; }
 .rd3 { transition-delay: .3s; }
 
+/* ── СМОТРОВАЯ ── */
+.observatory {
+  background: var(--green);
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 560px;
+}
+.obs-text {
+  padding: 88px 64px; display: flex; flex-direction: column; justify-content: center;
+}
+.obs-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: var(--green-light); margin-bottom: 14px; }
+.obs-title { font-family: 'Playfair Display', serif; font-size: clamp(40px,4.5vw,62px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 18px; }
+.obs-title em { font-style: italic; }
+.obs-sub { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,.65); margin-bottom: 36px; max-width: 420px; }
+.obs-facts { display: flex; flex-direction: column; gap: 0; margin-bottom: 36px; }
+.obs-fact { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.obs-fact:first-child { border-top: 1px solid rgba(255,255,255,.1); }
+.obs-fact-icon { font-size: 18px; flex-shrink: 0; width: 28px; text-align: center; }
+.obs-fact-text { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.4; }
+.obs-fact-text strong { color: #fff; font-weight: 600; }
+.obs-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-obs { background: #fff; color: var(--green); padding: 13px 28px; border-radius: 2px; border: none; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background .2s; }
+.btn-obs:hover { background: var(--green-pale); }
+.btn-obs-o { background: transparent; color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.3); padding: 12px 28px; border-radius: 2px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all .2s; }
+.btn-obs-o:hover { border-color: rgba(255,255,255,.7); color: #fff; }
+.obs-visual {
+  position: relative; overflow: hidden;
+  background: #14402A; display: flex; align-items: center; justify-content: center;
+}
+.obs-arch-container {
+  display: flex; gap: 20px; align-items: flex-end; height: 420px; padding: 0 40px;
+}
+.obs-arch {
+  border-radius: 999px 999px 0 0; overflow: hidden; flex: 1;
+  transition: transform .4s; cursor: pointer;
+}
+.obs-arch:hover { transform: translateY(-8px); }
+.obs-arch.a1 { height: 100%; background: linear-gradient(160deg,#2D7A50,#1A5432); display:flex;align-items:center;justify-content:center;font-size:48px; }
+.obs-arch.a2 { height: 76%; background: linear-gradient(160deg,#3A8C5C,#245C40); display:flex;align-items:center;justify-content:center;font-size:40px; }
+.obs-arch.a3 { height: 56%; background: linear-gradient(160deg,#4A9C6C,#2D6A48); display:flex;align-items:center;justify-content:center;font-size:32px; }
+.obs-stats-row {
+  position: absolute; bottom: 32px; left: 32px; right: 32px;
+  display: flex; gap: 16px;
+}
+.obs-stat-box {
+  flex: 1; background: rgba(255,255,255,.08); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.12); border-radius: 3px; padding: 14px 16px;
+  text-align: center;
+}
+.obs-stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: #fff; line-height: 1; }
+.obs-stat-lbl { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 4px; }
+
+/* ── МУЗЕЙ ДЕТСТВА ── */
+.museum { background: var(--beige); padding: 88px 64px; }
+.museum-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.museum-visual { position: relative; }
+.museum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.museum-card {
+  border-radius: 3px; overflow: hidden; aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; cursor: pointer; transition: transform .3s;
+}
+.museum-card:hover { transform: scale(1.03); }
+.mc1 { background: #D8CCB8; }
+.mc2 { background: #C8D8CC; grid-row: span 2; aspect-ratio: auto; min-height: 220px; }
+.mc3 { background: #D8C8B8; }
+.mc4 { background: #C8B8A8; font-size: 32px; }
+.museum-year-badge {
+  position: absolute; bottom: -16px; right: -16px;
+  background: var(--green); color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 900;
+  padding: 16px 20px; border-radius: 2px;
+  line-height: 1;
+}
+.museum-text { }
+.museum-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: var(--green2); margin-bottom: 14px; }
+.museum-title { font-family: 'Playfair Display', serif; font-size: clamp(36px,4vw,52px); font-weight: 900; color: var(--green); line-height: 1.05; margin-bottom: 18px; }
+.museum-title em { font-style: italic; }
+.museum-sub { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 28px; }
+.museum-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+.museum-feat { display: flex; gap: 14px; align-items: flex-start; }
+.museum-feat-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.museum-feat-text { font-size: 14px; line-height: 1.5; color: var(--dark); }
+.museum-feat-text strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.museum-timeline-hint {
+  background: var(--cream); border-left: 3px solid var(--green);
+  padding: 14px 18px; border-radius: 0 3px 3px 0; margin-bottom: 28px;
+  font-family: 'Playfair Display', serif; font-size: 14px; font-style: italic; color: var(--muted);
+}
+
+/* ── КИНОТЕАТР ── */
+.cinema {
+  background: #0F0D0B; position: relative; overflow: hidden;
+  padding: 88px 64px;
+}
+.cinema-grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+.cinema-bg-word {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: 'Playfair Display', serif; font-size: 280px; font-weight: 900;
+  color: rgba(255,255,255,.025); white-space: nowrap; pointer-events: none; letter-spacing: -.04em;
+}
+.cinema-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.cinema-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: #C8A84A; margin-bottom: 14px; }
+.cinema-title { font-family: 'Playfair Display', serif; font-size: clamp(40px,4.5vw,60px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 18px; }
+.cinema-title em { font-style: italic; color: #C8A84A; }
+.cinema-sub { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,.5); margin-bottom: 32px; max-width: 420px; }
+.cinema-feats { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+.cinema-feat { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.cinema-feat:first-child { border-top: 1px solid rgba(255,255,255,.06); }
+.cinema-feat-ico { font-size: 20px; flex-shrink: 0; width: 28px; text-align: center; }
+.cinema-feat-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.cinema-feat-desc { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.4; }
+.cinema-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-cinema { background: #C8A84A; color: #0F0D0B; padding: 13px 28px; border-radius: 2px; border: none; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background .2s; }
+.btn-cinema:hover { background: #B89A40; }
+.btn-cinema-o { background: transparent; color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.15); padding: 12px 28px; border-radius: 2px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all .2s; }
+.btn-cinema-o:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+/* Showtime panel */
+.cinema-panel { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 4px; overflow: hidden; }
+.cinema-panel-head { padding: 20px 24px; border-bottom: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; }
+.cinema-panel-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff; }
+.cinema-panel-date { font-size: 11px; color: rgba(255,255,255,.35); font-weight: 500; }
+.movie-row { display: flex; gap: 16px; padding: 18px 24px; border-bottom: 1px solid rgba(255,255,255,.05); align-items: center; cursor: pointer; transition: background .15s; }
+.movie-row:hover { background: rgba(255,255,255,.03); }
+.movie-row:last-child { border: none; }
+.movie-thumb { width: 44px; height: 60px; border-radius: 2px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.mt1 { background: #2A3C2E; }
+.mt2 { background: #3A2C18; }
+.mt3 { background: #2A1C2E; }
+.mt4 { background: #1C2A38; }
+.movie-info { flex: 1; min-width: 0; }
+.movie-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.movie-times { display: flex; flex-wrap: wrap; gap: 5px; }
+.movie-time { font-size: 11px; background: rgba(255,255,255,.07); color: rgba(255,255,255,.55); padding: 3px 8px; border-radius: 2px; }
+.movie-age { flex-shrink: 0; background: rgba(200,168,74,.15); color: #C8A84A; padding: 4px 8px; border-radius: 2px; font-size: 11px; font-weight: 700; }
+.cinema-panel-footer { padding: 16px 24px; background: rgba(200,168,74,.06); }
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--beige); }
@@ -544,7 +684,6 @@ footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 56px 64p
       <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       Сервисы
     </a>
-    <a href="https://giftcard.cdm-moscow.ru/" class="sub-pill">🎁 Подарочная карта</a>
   </div>
   <!-- Search bar -->
   <div id="searchBar" style="display:none;padding:12px 32px;border-top:1px solid var(--border);background:var(--cream)">
@@ -799,6 +938,96 @@ footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 56px 64p
   </div>
 </div>
 
+<!-- ══ СМОТРОВАЯ ПЛОЩАДКА ══ -->
+<section class="observatory" id="observatory">
+  <div class="obs-text reveal">
+    <p class="obs-label">7 этаж · ЦДМ на Лубянке</p>
+    <h2 class="obs-title">Смотровая<br><em>площадка</em></h2>
+    <p class="obs-sub">Панорамный вид на Лубянскую площадь, Кремль и исторический центр Москвы с крыши легендарного ЦДМ. Незабываемые впечатления для всей семьи.</p>
+    <div class="obs-facts">
+      <div class="obs-fact">
+        <span class="obs-fact-icon">🕐</span>
+        <span class="obs-fact-text"><strong>Ежедневно 10:00 – 22:00</strong> последний вход в 21:30</span>
+      </div>
+      <div class="obs-fact">
+        <span class="obs-fact-icon">🎟</span>
+        <span class="obs-fact-text"><strong>Билеты онлайн и в кассе</strong> на 7 этаже ЦДМ</span>
+      </div>
+      <div class="obs-fact">
+        <span class="obs-fact-icon">📏</span>
+        <span class="obs-fact-text"><strong>Возрастное ограничение:</strong> дети до 3 лет — бесплатно, до 14 — льготный билет</span>
+      </div>
+      <div class="obs-fact">
+        <span class="obs-fact-icon">🏙</span>
+        <span class="obs-fact-text">Вид на <strong>Лубянскую площадь, Кремль</strong> и панораму Москвы</span>
+      </div>
+    </div>
+    <div class="obs-btns">
+      <a href="https://cdm-moscow.ru/visit" class="btn-obs">Купить билет</a>
+      <a href="https://cdm-moscow.ru/visit" class="btn-obs-o">Правила посещения</a>
+    </div>
+  </div>
+  <div class="obs-visual reveal rd1">
+    <div class="obs-arch-container">
+      <div class="obs-arch a1">🏙</div>
+      <div class="obs-arch a2">🌆</div>
+      <div class="obs-arch a3">⭐</div>
+    </div>
+    <div class="obs-stats-row">
+      <div class="obs-stat-box">
+        <div class="obs-stat-num">7</div>
+        <div class="obs-stat-lbl">этаж</div>
+      </div>
+      <div class="obs-stat-box">
+        <div class="obs-stat-num">360°</div>
+        <div class="obs-stat-lbl">панорама</div>
+      </div>
+      <div class="obs-stat-box">
+        <div class="obs-stat-num">~40м</div>
+        <div class="obs-stat-lbl">высота</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ МУЗЕЙ ДЕТСТВА ══ -->
+<section class="museum" id="museum">
+  <div class="museum-inner">
+    <div class="museum-visual reveal">
+      <div class="museum-grid">
+        <div class="museum-card mc1">🪆</div>
+        <div class="museum-card mc2">🏛</div>
+        <div class="museum-card mc3">🚂</div>
+        <div class="museum-card mc4">📷</div>
+      </div>
+      <div class="museum-year-badge">1957</div>
+    </div>
+    <div class="museum-text reveal rd1">
+      <p class="museum-label">7 этаж · ЦДМ на Лубянке</p>
+      <h2 class="museum-title">Выставка<br><em>детства</em></h2>
+      <p class="museum-sub">Постоянная экспозиция об истории ЦДМ и детства в СССР и России. Архивные фотографии, игрушки эпох и подлинные артефакты — путешествие через десятилетия.</p>
+      <div class="museum-timeline-hint">
+        «Лубянский пассаж → Детский мир → ЦДМ — история любимого места трёх поколений»
+      </div>
+      <div class="museum-features">
+        <div class="museum-feat">
+          <span class="museum-feat-icon">🗓</span>
+          <div class="museum-feat-text"><strong>Постоянная экспозиция</strong>Открыта ежедневно, вход свободный</div>
+        </div>
+        <div class="museum-feat">
+          <span class="museum-feat-icon">🎧</span>
+          <div class="museum-feat-text"><strong>Аудиогид</strong>Бесплатный QR-аудиогид по выставке на русском и английском</div>
+        </div>
+        <div class="museum-feat">
+          <span class="museum-feat-icon">📚</span>
+          <div class="museum-feat-text"><strong>Архивные материалы</strong>Фотографии из Главархива Москвы и коллекции ЦДМ</div>
+        </div>
+      </div>
+      <a href="https://audioguide.cdm-moscow.ru/" target="_blank" class="btn-obs" style="background:var(--green);color:#fff">Аудиогид</a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ НЕДЕТСКИЙ ══ -->
 <section class="nedetskii" id="nedetskii">
   <div class="nd-inner">
@@ -850,6 +1079,111 @@ footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 56px 64p
       <a href="https://nedetskii.ru/events/" target="_blank" class="nd-ev reveal rd3" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
         <span class="nd-ev-ico">→</span><p class="nd-ev-title" style="color:rgba(245,240,232,.35);font-size:13px">Вся афиша событий</p>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ КИНОТЕАТР ══ -->
+<section class="cinema" id="cinema">
+  <div class="cinema-grain" aria-hidden="true"></div>
+  <div class="cinema-bg-word" aria-hidden="true">КИНО</div>
+  <div class="cinema-inner">
+    <div class="reveal">
+      <p class="cinema-label">7 этаж · Кинотеатр ЦДМ</p>
+      <h2 class="cinema-title">Кино<br><em>в сердце<br>Москвы</em></h2>
+      <p class="cinema-sub">Современный кинотеатр с лучшими семейными и детскими премьерами — прямо в ЦДМ. Удобно добираться, приятно смотреть.</p>
+      <div class="cinema-feats">
+        <div class="cinema-feat">
+          <span class="cinema-feat-ico">🎞</span>
+          <div>
+            <p class="cinema-feat-title">Актуальные премьеры</p>
+            <p class="cinema-feat-desc">Семейные, детские и подростковые новинки каждую неделю</p>
+          </div>
+        </div>
+        <div class="cinema-feat">
+          <span class="cinema-feat-ico">🎟</span>
+          <div>
+            <p class="cinema-feat-title">Онлайн-касса</p>
+            <p class="cinema-feat-desc">Покупка и бронирование билетов на сайте и в кассе кинотеатра</p>
+          </div>
+        </div>
+        <div class="cinema-feat">
+          <span class="cinema-feat-ico">🍿</span>
+          <div>
+            <p class="cinema-feat-title">Кафе и попкорн-бар</p>
+            <p class="cinema-feat-desc">Широкий выбор снеков и напитков перед сеансом</p>
+          </div>
+        </div>
+        <div class="cinema-feat">
+          <span class="cinema-feat-ico">👨‍👩‍👧</span>
+          <div>
+            <p class="cinema-feat-title">Семейные сеансы</p>
+            <p class="cinema-feat-desc">Специальные сеансы для детей до 3 лет и особые программы</p>
+          </div>
+        </div>
+      </div>
+      <div class="cinema-cta-row">
+        <a href="https://cdm-moscow.ru/afisha" class="btn-cinema">Купить билет</a>
+        <a href="https://cdm-moscow.ru/afisha" class="btn-cinema-o">Вся афиша →</a>
+      </div>
+    </div>
+    <div class="cinema-panel reveal rd1">
+      <div class="cinema-panel-head">
+        <span class="cinema-panel-title">🎬 Сейчас в кино</span>
+        <span class="cinema-panel-date">Сегодня</span>
+      </div>
+      <div class="movie-row">
+        <div class="movie-thumb mt1">🐉</div>
+        <div class="movie-info">
+          <p class="movie-title">Кунг-фу Панда 5</p>
+          <div class="movie-times">
+            <span class="movie-time">11:00</span>
+            <span class="movie-time">13:30</span>
+            <span class="movie-time">16:00</span>
+            <span class="movie-time">18:30</span>
+          </div>
+        </div>
+        <span class="movie-age">6+</span>
+      </div>
+      <div class="movie-row">
+        <div class="movie-thumb mt2">✨</div>
+        <div class="movie-info">
+          <p class="movie-title">Лило и Стич</p>
+          <div class="movie-times">
+            <span class="movie-time">10:30</span>
+            <span class="movie-time">12:45</span>
+            <span class="movie-time">15:15</span>
+            <span class="movie-time">17:45</span>
+          </div>
+        </div>
+        <span class="movie-age">0+</span>
+      </div>
+      <div class="movie-row">
+        <div class="movie-thumb mt3">🧙</div>
+        <div class="movie-info">
+          <p class="movie-title">Гарри Поттер: Возвращение</p>
+          <div class="movie-times">
+            <span class="movie-time">14:00</span>
+            <span class="movie-time">17:00</span>
+            <span class="movie-time">20:00</span>
+          </div>
+        </div>
+        <span class="movie-age">12+</span>
+      </div>
+      <div class="movie-row">
+        <div class="movie-thumb mt4">🚀</div>
+        <div class="movie-info">
+          <p class="movie-title">Астронавт</p>
+          <div class="movie-times">
+            <span class="movie-time">16:30</span>
+            <span class="movie-time">19:15</span>
+          </div>
+        </div>
+        <span class="movie-age">6+</span>
+      </div>
+      <div class="cinema-panel-footer">
+        <a href="https://cdm-moscow.ru/afisha" class="btn-cinema" style="display:block;text-align:center">Все сеансы и билеты →</a>
+      </div>
     </div>
   </div>
 </section>
