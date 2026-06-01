@@ -6,92 +6,41 @@
 <title>Организовать праздник — ЦДМ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --beige:#F0EBE3;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;
-  --green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;
-  --muted:#7A7265;--border:#DDD6CC;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;
-  box-shadow:0 2px 20px rgba(0,0,0,.06)}
+
+:root{--beige:#F0EBE3;--beige2:#E4DDD4;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;--green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;--muted:#7A7265;--border:#DDD6CC;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--green);letter-spacing:.04em}
-.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);
-  cursor:pointer;transition:color .2s}
-.nav-back:hover{color:var(--green)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);transition:opacity .2s}
-.nav-links a:hover{opacity:.6}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-search{background:none;border:none;cursor:pointer;color:var(--green);padding:6px;font-size:18px}
-/* PAGE HEADER */
+.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:color .2s}.nav-back:hover{color:var(--green)}
 .page-top{background:var(--beige);padding:56px 64px 48px}
 .page-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.page-breadcrumb a{color:var(--muted);transition:color .2s}
-.page-breadcrumb a:hover{color:var(--green)}
+.page-breadcrumb a{color:var(--muted);transition:color .2s}.page-breadcrumb a:hover{color:var(--green)}
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,64px);font-weight:900;color:var(--green);line-height:1.05;margin-bottom:12px}
-.page-title em{font-style:italic}
-.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
-/* SECTION */
-.section{padding:64px}
-.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
-/* CARD GRID */
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:52px}
-.card-body{padding:20px}
-.card-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);margin-bottom:6px}
-.card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.25}
-.card-meta{font-size:13px;color:var(--muted);line-height:1.5}
-/* FILTERS */
+.page-title em{font-style:italic}.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
+.section{padding:64px}.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .filter-btn{padding:8px 18px;border:1px solid var(--border);border-radius:99px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;background:none;transition:all .15s}
 .filter-btn.active,.filter-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
-/* SEARCH */
 .search-row{display:flex;gap:0;margin-bottom:32px;max-width:480px}
 .search-input{flex:1;padding:11px 16px;border:1px solid var(--border);border-right:none;font-family:'Inter',sans-serif;font-size:14px;outline:none;background:var(--beige)}
 .search-btn{padding:11px 20px;background:var(--green);color:#fff;border:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-/* BTN */
 .btn{display:inline-block;padding:13px 32px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:none}
 .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:var(--green2)}
 .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}.btn-outline:hover{background:var(--green);color:#fff}
-/* FORM */
-.form-group{margin-bottom:20px}
-.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;border-radius:0;transition:border-color .2s}
+.form-group{margin-bottom:20px}.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green)}
-.form-textarea{min-height:120px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-/* SOCIAL CTA */
-.social-cta{background:var(--green);padding:48px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.social-cta-text{color:rgba(255,255,255,.9);font-family:'Playfair Display',serif;font-size:24px;font-weight:700}
-.social-btns{display:flex;gap:10px}
-.social-btn-pill{display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s}
-.social-btn-pill:hover{background:rgba(255,255,255,.2)}
-/* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px}
-.footer-top{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px}
-.footer-logo{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px}
-.footer-col-title{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
-.footer-links a:hover{color:var(--green-light)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)}
-.footer-socs{display:flex;gap:8px}
-.footer-soc{width:32px;height:32px;border:1px solid rgba(255,255,255,.15);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s}
-.footer-soc:hover{border-color:var(--green-light);color:var(--green-light)}
+.form-textarea{min-height:120px;resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+
 </style>
 </head>
 <body><nav>
   <a href="cdm-redesign.html" class="nav-back">← Главная</a>
   <a href="cdm-redesign.html" class="nav-logo">ЦДМ</a>
-  <div class="nav-right">
-    <button class="nav-search" aria-label="Поиск">⌕</button>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button style="background:none;border:none;cursor:pointer;color:var(--green);font-size:18px" aria-label="Поиск">⌕</button>
   </div>
 </nav>
 <div class="page-top">
@@ -99,82 +48,213 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px}
   <h1 class="page-title">Организовать <em>праздник</em></h1>
   <p class="page-sub">День рождения, выпускной, тематическая вечеринка — незабываемые события в ЦДМ</p>
 </div>
-<div class="section">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
-    <div>
-      <div class="section-title">Форматы праздников</div>
-      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
-        <div style="border:1px solid var(--border);border-radius:4px;padding:20px 24px;cursor:pointer;transition:border-color .2s" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
-          <div style="font-size:16px;font-weight:700;margin-bottom:4px">🎂 День рождения</div>
-          <div style="font-size:14px;color:var(--muted)">Персонализированный праздник с декором, тортом и развлечениями</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:4px;padding:20px 24px;cursor:pointer;transition:border-color .2s" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
-          <div style="font-size:16px;font-weight:700;margin-bottom:4px">🎓 Выпускной</div>
-          <div style="font-size:14px;color:var(--muted)">Торжественное мероприятие для детского сада или начальной школы</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:4px;padding:20px 24px;cursor:pointer;transition:border-color .2s" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
-          <div style="font-size:16px;font-weight:700;margin-bottom:4px">🎭 Тематическая вечеринка</div>
-          <div style="font-size:14px;color:var(--muted)">Superhero, принцессы, динозавры — любая тема по желанию</div>
-        </div>
+
+<!-- Party variants -->
+<div style="padding:64px">
+  <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--green);margin-bottom:40px">Форматы праздников</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:0;border-bottom:2px solid var(--border)">
+    <!-- Visual -->
+    <div style="background:#D4E8DC;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px;order:1">
+      <div style="font-size:80px">🎂</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:280px">
+<div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Именной декор и воздушные шары</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Торт по вашему вкусу</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Аниматор в тематическом костюме</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Конкурсы и игры 2 часа</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Фотозона в стиле праздника</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">до 20 гостей включено</div>
       </div>
     </div>
-    <div>
-      <div class="section-title">Оставить заявку</div>
-      <div class="form-group"><label class="form-label">Ваше имя *</label><input class="form-input" placeholder="Имя" required></div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">Телефон *</label><input class="form-input" type="tel" placeholder="+7 (000) 000-00-00" required></div>
-        <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" placeholder="email@mail.ru" required></div>
+    <!-- Text -->
+    <div style="padding:48px;display:flex;flex-direction:column;justify-content:center;order:2">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green2);margin-bottom:12px">От 3 до 12 лет</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--dark);margin-bottom:12px">День рождения</h3>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green);margin-bottom:16px">от 15 000 ₽</div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px">Полная организация именинника: декор в теме, торт, аниматор, конкурсы и подарки. Выбор зоны в ЦДМ — от арт-пространства до атриума.</p>
+      <a href="#booking" class="btn btn-green" style="align-self:flex-start">Забронировать →</a>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:0;border-bottom:2px solid var(--border)">
+    <!-- Visual -->
+    <div style="background:#E8DDD4;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px;order:2">
+      <div style="font-size:80px">🎓</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:280px">
+<div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Сцена и микрофон</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Музыкальное сопровождение</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Торжественная речь</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Фуршет и напитки</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Фотограф</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">до 100 гостей</div>
       </div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">Желаемая дата</label><input class="form-input" type="date"></div>
-        <div class="form-group"><label class="form-label">Количество детей</label><input class="form-input" type="number" placeholder="10"></div>
+    </div>
+    <!-- Text -->
+    <div style="padding:48px;display:flex;flex-direction:column;justify-content:center;order:1">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green2);margin-bottom:12px">Детский сад и 1–4 класс</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--dark);margin-bottom:12px">Выпускной</h3>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green);margin-bottom:16px">от 25 000 ₽</div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px">Торжественное мероприятие в Центральном Атриуме: церемония вручения, танцы, фуршет.</p>
+      <a href="#booking" class="btn btn-green" style="align-self:flex-start">Забронировать →</a>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:0;border-bottom:2px solid var(--border)">
+    <!-- Visual -->
+    <div style="background:#DDD4E8;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px;order:1">
+      <div style="font-size:80px">🎭</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:280px">
+<div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Выбор из 20+ тем</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Профессиональный грим</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Реквизит и костюмы</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Аниматор</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Конкурсы</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">до 15 детей</div>
       </div>
-      <div class="form-group"><label class="form-label">Формат праздника</label>
-        <select class="form-select"><option>День рождения</option><option>Выпускной</option><option>Тематическая вечеринка</option><option>Другое</option></select>
+    </div>
+    <!-- Text -->
+    <div style="padding:48px;display:flex;flex-direction:column;justify-content:center;order:2">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green2);margin-bottom:12px">Любой возраст</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--dark);margin-bottom:12px">Тематическая вечеринка</h3>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green);margin-bottom:16px">от 12 000 ₽</div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px">Superhero, принцессы, динозавры, Minecraft — любая тема воплощается в деталях. Грим, костюмы, декор.</p>
+      <a href="#booking" class="btn btn-green" style="align-self:flex-start">Забронировать →</a>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:0;border-bottom:2px solid var(--border)">
+    <!-- Visual -->
+    <div style="background:#D4DCE8;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px;order:2">
+      <div style="font-size:80px">🎪</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:280px">
+<div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Сценарий квеста</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Ведущий</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Задания на 7 этажах</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Финальная церемония</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Медали и призы</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">6–20 участников</div>
       </div>
-      <div class="form-group"><label class="form-label">Комментарий</label><textarea class="form-textarea" placeholder="Расскажите о ваших пожеланиях"></textarea></div>
-      <button class="btn btn-green" style="width:100%">Отправить заявку</button>
-      <p style="font-size:12px;color:var(--muted);margin-top:10px">Мы свяжемся с вами в течение 1 рабочего дня</p>
+    </div>
+    <!-- Text -->
+    <div style="padding:48px;display:flex;flex-direction:column;justify-content:center;order:1">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green2);margin-bottom:12px">5–14 лет</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--dark);margin-bottom:12px">Квест-вечеринка</h3>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green);margin-bottom:16px">от 18 000 ₽</div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px">Командный квест по этажам ЦДМ: загадки, задания, финальная награда. Дети исследуют весь магазин!</p>
+      <a href="#booking" class="btn btn-green" style="align-self:flex-start">Забронировать →</a>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:0;border-bottom:2px solid var(--border)">
+    <!-- Visual -->
+    <div style="background:#E8E4D4;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px;order:1">
+      <div style="font-size:80px">🍰</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:280px">
+<div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Мастер-класс кондитера</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Все ингредиенты</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Колпак и фартук каждому</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Декорирование десерта</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">Дегустация</div><div style="background:rgba(255,255,255,.6);border-radius:3px;padding:8px 12px;font-size:12px;font-weight:500">4–12 детей</div>
+      </div>
+    </div>
+    <!-- Text -->
+    <div style="padding:48px;display:flex;flex-direction:column;justify-content:center;order:2">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green2);margin-bottom:12px">4–12 лет</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--dark);margin-bottom:12px">Кулинарная вечеринка</h3>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green);margin-bottom:16px">от 20 000 ₽</div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px">Готовим торт или пиццу вместе! Профессиональный кондитер, колпаки шефа и фартуки в подарок.</p>
+      <a href="#booking" class="btn btn-green" style="align-self:flex-start">Забронировать →</a>
     </div>
   </div>
 </div>
-<footer>
-  <div class="footer-top">
-    <div><a href="cdm-redesign.html" class="footer-logo">ЦДМ</a>
-      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
-      <div class="footer-socs" style="margin-top:14px">
-        <a href="https://vk.com/cdmmoscow" class="footer-soc" target="_blank">VK</a>
-        <a href="https://t.me/cdm_moscow" class="footer-soc" target="_blank">TG</a>
+
+<!-- Booking form -->
+<div id="booking" style="background:var(--beige);padding:64px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
+    <div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--green);margin-bottom:16px">Оставить заявку</h2>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px">Мы свяжемся с вами в течение одного рабочего дня, уточним детали и подберём оптимальный формат.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;color:var(--muted)">
+        <div>📞 <a href="tel:+74951234595" style="color:var(--green)">+7 (495) 123-45-95</a></div>
+        <div>📧 <a href="mailto:party@cdm-moscow.ru" style="color:var(--green)">party@cdm-moscow.ru</a></div>
+        <div>🕐 Пн–Пт 10:00–19:00</div>
       </div>
     </div>
-    <div><p class="footer-col-title">Посетителям</p>
-      <ul class="footer-links">
-        <li><a href="floors.html">План этажей</a></li>
-        <li><a href="shops.html">Магазины</a></li>
-        <li><a href="afisha.html">Афиша</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="services.html">Сервисы</a></li>
-      </ul>
-    </div>
-    <div><p class="footer-col-title">Для бизнеса</p>
-      <ul class="footer-links">
-        <li><a href="tenants.html">Арендаторам</a></li>
-        <li><a href="partners.html">Партнёрам</a></li>
-        <li><a href="advertising.html">Реклама</a></li>
-        <li><a href="events-b2b.html">Мероприятия</a></li>
-      </ul>
-    </div>
-    <div><p class="footer-col-title">О ЦДМ</p>
-      <ul class="footer-links">
-        <li><a href="history.html">История ЦДМ</a></li>
-        <li><a href="observatory.html">Смотровая</a></li>
-        <li><a href="party.html">Организовать праздник</a></li>
-        <li><a href="news.html">Новости</a></li>
-      </ul>
+    <div>
+      <div class="form-group"><label class="form-label">Ваше имя *</label><input class="form-input" required></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Телефон *</label><input class="form-input" type="tel" required></div>
+        <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Желаемая дата</label><input class="form-input" type="date"></div>
+        <div class="form-group"><label class="form-label">Кол-во детей</label><input class="form-input" type="number" placeholder="10"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Формат праздника *</label>
+        <select class="form-select"><option>День рождения</option><option>Выпускной</option><option>Тематическая вечеринка</option><option>Квест-вечеринка</option><option>Кулинарная вечеринка</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Пожелания</label><textarea class="form-textarea"></textarea></div>
+      <button class="btn btn-green" style="width:100%">Отправить заявку</button>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 ЦДМ на Лубянке · Дизайн создан в Супрематике</span>
+</div>
+
+<!-- News Block -->
+<section style="background:var(--beige);padding:64px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px">
+    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green)">Новости и акции</h2>
+    <a href="news.html" style="font-size:13px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px">Все новости →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <div style="background:#fff;border-radius:4px;overflow:hidden;cursor:pointer" onclick="location.href='news.html'">
+      <div style="height:160px;background:#B8D4E8;display:flex;align-items:center;justify-content:center;font-size:48px">🎡</div>
+      <div style="padding:16px"><p style="font-size:11px;color:var(--muted);margin-bottom:6px">6 апреля</p><p style="font-size:15px;font-weight:600">Открытие смотровой площадки</p></div>
+    </div>
+    <div style="background:#fff;border-radius:4px;overflow:hidden;cursor:pointer" onclick="location.href='news.html'">
+      <div style="height:160px;background:#C8E8C0;display:flex;align-items:center;justify-content:center;font-size:48px">🛴</div>
+      <div style="padding:16px"><p style="font-size:11px;color:var(--muted);margin-bottom:6px">16 июня</p><p style="font-size:15px;font-weight:600">Детский утренник в ЦДМ</p></div>
+    </div>
+    <div style="background:#fff;border-radius:4px;overflow:hidden;cursor:pointer" onclick="location.href='news.html'">
+      <div style="height:160px;background:#F5C8C0;display:flex;align-items:center;justify-content:center;font-size:48px">🎄</div>
+      <div style="padding:16px"><p style="font-size:11px;color:var(--muted);margin-bottom:6px">26 декабря</p><p style="font-size:15px;font-weight:600">Детский новогодний утренник</p></div>
+    </div>
+  </div>
+</section>
+<!-- Social + Email Sub -->
+<section style="background:var(--green);padding:56px 64px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+    <div>
+      <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--green-light);margin-bottom:12px">Оставайтесь на связи</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;margin-bottom:14px">Подпишитесь<br>на наши новости</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.6">Новые коллекции, события и акции — первыми узнавайте о лучшем в ЦДМ</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://t.me/cdm_moscow" target="_blank" style="display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">✈ Telegram</a>
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">VK</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:16px">Email-рассылка</p>
+      <div style="display:flex;gap:0">
+        <input type="email" placeholder="Ваш e-mail" style="flex:1;padding:14px 18px;border:none;background:rgba(255,255,255,.12);color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none" placeholder-style="color:rgba(255,255,255,.4)">
+        <button style="background:#fff;color:var(--green);border:none;padding:14px 24px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Подписаться</button>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:10px">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности</p>
+    </div>
+  </div>
+</section><footer style="background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px">
+    <div>
+      <a href="cdm-redesign.html" style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px">ЦДМ</a>
+      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">VK</a>
+        <a href="https://t.me/cdm_moscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">TG</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Посетителям</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="floors.html" style="font-size:13px;color:rgba(255,255,255,.45)">План этажей</a>
+        <a href="shops.html" style="font-size:13px;color:rgba(255,255,255,.45)">Магазины</a>
+        <a href="afisha.html" style="font-size:13px;color:rgba(255,255,255,.45)">Афиша</a>
+        <a href="contacts.html" style="font-size:13px;color:rgba(255,255,255,.45)">Контакты</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.45)">Сервисы</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Для бизнеса</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tenants.html" style="font-size:13px;color:rgba(255,255,255,.45)">Арендаторам</a>
+        <a href="partners.html" style="font-size:13px;color:rgba(255,255,255,.45)">Партнёрам</a>
+        <a href="advertising.html" style="font-size:13px;color:rgba(255,255,255,.45)">Реклама</a>
+        <a href="events-b2b.html" style="font-size:13px;color:rgba(255,255,255,.45)">Мероприятия</a>
+        <a href="press.html" style="font-size:13px;color:rgba(255,255,255,.45)">СМИ / Пресс-служба</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">О ЦДМ</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="history.html" style="font-size:13px;color:rgba(255,255,255,.45)">История ЦДМ</a>
+        <a href="observatory.html" style="font-size:13px;color:rgba(255,255,255,.45)">Смотровая</a>
+        <a href="party.html" style="font-size:13px;color:rgba(255,255,255,.45)">Организовать праздник</a>
+        <a href="news.html" style="font-size:13px;color:rgba(255,255,255,.45)">Новости</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)">
+    <span>© 2025 ЦДМ на Лубянке</span>
     <div style="display:flex;gap:20px"><a href="#" style="color:rgba(255,255,255,.25)">Политика конфиденциальности</a><a href="#" style="color:rgba(255,255,255,.25)">Правила</a></div>
   </div>
 </footer>

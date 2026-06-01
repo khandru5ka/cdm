@@ -6,159 +6,133 @@
 <title>Реклама в ЦДМ — ЦДМ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --beige:#F0EBE3;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;
-  --green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;
-  --muted:#7A7265;--border:#DDD6CC;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;
-  box-shadow:0 2px 20px rgba(0,0,0,.06)}
+
+:root{--beige:#F0EBE3;--beige2:#E4DDD4;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;--green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;--muted:#7A7265;--border:#DDD6CC;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--green);letter-spacing:.04em}
-.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);
-  cursor:pointer;transition:color .2s}
-.nav-back:hover{color:var(--green)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);transition:opacity .2s}
-.nav-links a:hover{opacity:.6}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-search{background:none;border:none;cursor:pointer;color:var(--green);padding:6px;font-size:18px}
-/* PAGE HEADER */
+.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:color .2s}.nav-back:hover{color:var(--green)}
 .page-top{background:var(--beige);padding:56px 64px 48px}
 .page-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.page-breadcrumb a{color:var(--muted);transition:color .2s}
-.page-breadcrumb a:hover{color:var(--green)}
+.page-breadcrumb a{color:var(--muted);transition:color .2s}.page-breadcrumb a:hover{color:var(--green)}
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,64px);font-weight:900;color:var(--green);line-height:1.05;margin-bottom:12px}
-.page-title em{font-style:italic}
-.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
-/* SECTION */
-.section{padding:64px}
-.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
-/* CARD GRID */
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:52px}
-.card-body{padding:20px}
-.card-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);margin-bottom:6px}
-.card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.25}
-.card-meta{font-size:13px;color:var(--muted);line-height:1.5}
-/* FILTERS */
+.page-title em{font-style:italic}.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
+.section{padding:64px}.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .filter-btn{padding:8px 18px;border:1px solid var(--border);border-radius:99px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;background:none;transition:all .15s}
 .filter-btn.active,.filter-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
-/* SEARCH */
 .search-row{display:flex;gap:0;margin-bottom:32px;max-width:480px}
 .search-input{flex:1;padding:11px 16px;border:1px solid var(--border);border-right:none;font-family:'Inter',sans-serif;font-size:14px;outline:none;background:var(--beige)}
 .search-btn{padding:11px 20px;background:var(--green);color:#fff;border:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-/* BTN */
 .btn{display:inline-block;padding:13px 32px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:none}
 .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:var(--green2)}
 .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}.btn-outline:hover{background:var(--green);color:#fff}
-/* FORM */
-.form-group{margin-bottom:20px}
-.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;border-radius:0;transition:border-color .2s}
+.form-group{margin-bottom:20px}.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green)}
-.form-textarea{min-height:120px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-/* SOCIAL CTA */
-.social-cta{background:var(--green);padding:48px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.social-cta-text{color:rgba(255,255,255,.9);font-family:'Playfair Display',serif;font-size:24px;font-weight:700}
-.social-btns{display:flex;gap:10px}
-.social-btn-pill{display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s}
-.social-btn-pill:hover{background:rgba(255,255,255,.2)}
-/* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px}
-.footer-top{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px}
-.footer-logo{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px}
-.footer-col-title{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
-.footer-links a:hover{color:var(--green-light)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)}
-.footer-socs{display:flex;gap:8px}
-.footer-soc{width:32px;height:32px;border:1px solid rgba(255,255,255,.15);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s}
-.footer-soc:hover{border-color:var(--green-light);color:var(--green-light)}
+.form-textarea{min-height:120px;resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+
 </style>
 </head>
 <body><nav>
   <a href="cdm-redesign.html" class="nav-back">← Главная</a>
   <a href="cdm-redesign.html" class="nav-logo">ЦДМ</a>
-  <div class="nav-right">
-    <button class="nav-search" aria-label="Поиск">⌕</button>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button style="background:none;border:none;cursor:pointer;color:var(--green);font-size:18px" aria-label="Поиск">⌕</button>
   </div>
 </nav>
 <div class="page-top">
   <div class="page-breadcrumb"><a href="cdm-redesign.html">Главная</a> › <span>Реклама в ЦДМ</span></div>
-  <h1 class="page-title">Реклама <em>в ЦДМ</em></h1>
+  <h1 class="page-title"><em>Реклама в ЦДМ</em></h1>
   <p class="page-sub">Широкие возможности для продвижения вашего бренда в сердце Москвы</p>
 </div>
 <div class="section">
-  <p style="font-size:16px;line-height:1.75;color:var(--muted);max-width:680px;margin-bottom:48px">«Центральный Детский Магазин» предлагает широкий спектр возможностей для продвижения вашей торговой марки или продукта. Мы рады помочь в поиске необходимого рекламного оборудования и предложить все имеющиеся возможности.</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:48px">
-    <div style="padding:36px 28px;border-right:1px solid var(--border)"><div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px">30+</div><div style="font-size:13px;color:var(--muted)"><strong style="color:var(--dark);display:block;margin-bottom:4px">рекламных поверхностей</strong>Digital-экраны, баннеры, промозоны</div></div>
-    <div style="padding:36px 28px;border-right:1px solid var(--border)"><div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px">8</div><div style="font-size:13px;color:var(--muted)"><strong style="color:var(--dark);display:block;margin-bottom:4px">видов рекламных форматов</strong>От indoor-экранов до промо-стоек</div></div>
-    <div style="padding:36px 28px"><div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px">5M+</div><div style="font-size:13px;color:var(--muted)"><strong style="color:var(--dark);display:block;margin-bottom:4px">посетителей в год</strong>Семьи, подростки, туристы</div></div>
-  </div>
-  <div class="section-title">Форматы размещения</div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px">
-    <div style="background:var(--beige);border-radius:4px;padding:24px;text-align:center"><div style="font-size:32px;margin-bottom:12px">📺</div><div style="font-weight:600;margin-bottom:6px">Digital-экраны</div><div style="font-size:13px;color:var(--muted)">Видеореклама на LCD-экранах по всем этажам</div></div>
-    <div style="background:var(--beige);border-radius:4px;padding:24px;text-align:center"><div style="font-size:32px;margin-bottom:12px">🎪</div><div style="font-weight:600;margin-bottom:6px">Промозона</div><div style="font-size:13px;color:var(--muted)">Аренда промо-пространств в атриуме</div></div>
-    <div style="background:var(--beige);border-radius:4px;padding:24px;text-align:center"><div style="font-size:32px;margin-bottom:12px">🖼</div><div style="font-weight:600;margin-bottom:6px">Баннеры</div><div style="font-size:13px;color:var(--muted)">Форматные конструкции у входов</div></div>
-    <div style="background:var(--beige);border-radius:4px;padding:24px;text-align:center"><div style="font-size:32px;margin-bottom:12px">🤝</div><div style="font-weight:600;margin-bottom:6px">Партнёрские события</div><div style="font-size:13px;color:var(--muted)">Совместные мероприятия и кобрендинг</div></div>
-  </div>
-  <div style="background:var(--beige);border-radius:4px;padding:32px;max-width:480px">
-    <div class="section-title" style="font-size:20px;margin-bottom:16px">Контакты</div>
-    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--muted)">
-      <div>📧 Общие вопросы: <a href="mailto:adv@cdm-moscow.ru" style="color:var(--green)">adv@cdm-moscow.ru</a></div>
-      <div>📧 Для арендаторов: <a href="mailto:rent-adv@cdm-moscow.ru" style="color:var(--green)">rent-adv@cdm-moscow.ru</a></div>
-      <div>📧 Стратегические партнёрства: <a href="mailto:strategy@cdm-moscow.ru" style="color:var(--green)">strategy@cdm-moscow.ru</a></div>
-    </div>
-  </div>
+
+      <p style="font-size:16px;line-height:1.75;color:var(--muted);max-width:680px;margin-bottom:40px">«Центральный Детский Магазин» предлагает широкий спектр возможностей для продвижения. Мы рады помочь в поиске необходимого рекламного оборудования.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:48px">
+        <div style="padding:32px;border-right:1px solid var(--border)"><div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px">30+</div><div style="font-size:13px;color:var(--muted)"><strong style="color:var(--dark);display:block;margin-bottom:4px">рекламных поверхностей</strong>Digital-экраны, баннеры, промозоны</div></div>
+        <div style="padding:32px;border-right:1px solid var(--border)"><div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px">8</div><div style="font-size:13px;color:var(--muted)"><strong style="color:var(--dark);display:block;margin-bottom:4px">форматов размещения</strong></div></div>
+        <div style="padding:32px"><div style="font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px">5M+</div><div style="font-size:13px;color:var(--muted)"><strong style="color:var(--dark);display:block;margin-bottom:4px">посетителей в год</strong></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px">
+        <div style="background:var(--beige);border-radius:4px;padding:20px;text-align:center"><div style="font-size:28px;margin-bottom:10px">📺</div><div style="font-weight:600;font-size:14px;margin-bottom:6px">Digital-экраны</div><div style="font-size:12px;color:var(--muted)">Видеореклама по всем этажам</div></div>
+        <div style="background:var(--beige);border-radius:4px;padding:20px;text-align:center"><div style="font-size:28px;margin-bottom:10px">🎪</div><div style="font-weight:600;font-size:14px;margin-bottom:6px">Промозона</div><div style="font-size:12px;color:var(--muted)">Аренда пространств в атриуме</div></div>
+        <div style="background:var(--beige);border-radius:4px;padding:20px;text-align:center"><div style="font-size:28px;margin-bottom:10px">🖼</div><div style="font-weight:600;font-size:14px;margin-bottom:6px">Баннеры</div><div style="font-size:12px;color:var(--muted)">Форматные конструкции у входов</div></div>
+        <div style="background:var(--beige);border-radius:4px;padding:20px;text-align:center"><div style="font-size:28px;margin-bottom:10px">🤝</div><div style="font-weight:600;font-size:14px;margin-bottom:6px">Партнёрства</div><div style="font-size:12px;color:var(--muted)">Совместные мероприятия и кобрендинг</div></div>
+      </div>
 </div>
-<footer>
-  <div class="footer-top">
-    <div><a href="cdm-redesign.html" class="footer-logo">ЦДМ</a>
-      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
-      <div class="footer-socs" style="margin-top:14px">
-        <a href="https://vk.com/cdmmoscow" class="footer-soc" target="_blank">VK</a>
-        <a href="https://t.me/cdm_moscow" class="footer-soc" target="_blank">TG</a>
+
+<!-- Business contact form -->
+<section id="biz-form" style="background:var(--beige);padding:64px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
+    <div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--green);margin-bottom:16px">Свяжитесь с нами</h2>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px">Оставьте заявку — мы ответим в течение одного рабочего дня и подберём оптимальное предложение.</p>
+      <div style="background:#fff;border-radius:4px;padding:24px;margin-bottom:20px">
+        <p style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;color:var(--dark)">Презентация объекта</p>
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--green);color:#fff;border-radius:2px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">📄 Скачать PDF презентацию</a>
       </div>
     </div>
-    <div><p class="footer-col-title">Посетителям</p>
-      <ul class="footer-links">
-        <li><a href="floors.html">План этажей</a></li>
-        <li><a href="shops.html">Магазины</a></li>
-        <li><a href="afisha.html">Афиша</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="services.html">Сервисы</a></li>
-      </ul>
-    </div>
-    <div><p class="footer-col-title">Для бизнеса</p>
-      <ul class="footer-links">
-        <li><a href="tenants.html">Арендаторам</a></li>
-        <li><a href="partners.html">Партнёрам</a></li>
-        <li><a href="advertising.html">Реклама</a></li>
-        <li><a href="events-b2b.html">Мероприятия</a></li>
-      </ul>
-    </div>
-    <div><p class="footer-col-title">О ЦДМ</p>
-      <ul class="footer-links">
-        <li><a href="history.html">История ЦДМ</a></li>
-        <li><a href="observatory.html">Смотровая</a></li>
-        <li><a href="party.html">Организовать праздник</a></li>
-        <li><a href="news.html">Новости</a></li>
-      </ul>
+    <div>
+      <div class="form-group"><label class="form-label">Имя и фамилия *</label><input class="form-input" placeholder="Иван Иванов" required></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" required></div>
+        <div class="form-group"><label class="form-label">Телефон *</label><input class="form-input" type="tel" required></div>
+      </div>
+      <div class="form-group"><label class="form-label">Компания *</label><input class="form-input" required></div>
+      <div class="form-group"><label class="form-label">Тема обращения *</label>
+        <select class="form-select"><option>Аренда площади</option><option>Рекламное размещение</option><option>Партнёрство</option><option>Мероприятие</option><option>Другое</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Комментарий</label><textarea class="form-textarea" placeholder="Расскажите о вашем запросе"></textarea></div>
+      <button class="btn btn-green" style="width:100%">Отправить заявку</button>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px">Все поля обязательны. Данные передаются на email отдела.</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 ЦДМ на Лубянке · Дизайн создан в Супрематике</span>
+</section>
+<footer style="background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px">
+    <div>
+      <a href="cdm-redesign.html" style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px">ЦДМ</a>
+      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">VK</a>
+        <a href="https://t.me/cdm_moscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">TG</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Посетителям</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="floors.html" style="font-size:13px;color:rgba(255,255,255,.45)">План этажей</a>
+        <a href="shops.html" style="font-size:13px;color:rgba(255,255,255,.45)">Магазины</a>
+        <a href="afisha.html" style="font-size:13px;color:rgba(255,255,255,.45)">Афиша</a>
+        <a href="contacts.html" style="font-size:13px;color:rgba(255,255,255,.45)">Контакты</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.45)">Сервисы</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Для бизнеса</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tenants.html" style="font-size:13px;color:rgba(255,255,255,.45)">Арендаторам</a>
+        <a href="partners.html" style="font-size:13px;color:rgba(255,255,255,.45)">Партнёрам</a>
+        <a href="advertising.html" style="font-size:13px;color:rgba(255,255,255,.45)">Реклама</a>
+        <a href="events-b2b.html" style="font-size:13px;color:rgba(255,255,255,.45)">Мероприятия</a>
+        <a href="press.html" style="font-size:13px;color:rgba(255,255,255,.45)">СМИ / Пресс-служба</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">О ЦДМ</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="history.html" style="font-size:13px;color:rgba(255,255,255,.45)">История ЦДМ</a>
+        <a href="observatory.html" style="font-size:13px;color:rgba(255,255,255,.45)">Смотровая</a>
+        <a href="party.html" style="font-size:13px;color:rgba(255,255,255,.45)">Организовать праздник</a>
+        <a href="news.html" style="font-size:13px;color:rgba(255,255,255,.45)">Новости</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)">
+    <span>© 2025 ЦДМ на Лубянке</span>
     <div style="display:flex;gap:20px"><a href="#" style="color:rgba(255,255,255,.25)">Политика конфиденциальности</a><a href="#" style="color:rgba(255,255,255,.25)">Правила</a></div>
   </div>
 </footer>

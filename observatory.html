@@ -6,219 +6,283 @@
 <title>Смотровая площадка и Выставка детства — ЦДМ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --beige:#F0EBE3;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;
-  --green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;
-  --muted:#7A7265;--border:#DDD6CC;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;
-  box-shadow:0 2px 20px rgba(0,0,0,.06)}
+
+:root{--beige:#F0EBE3;--beige2:#E4DDD4;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;--green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;--muted:#7A7265;--border:#DDD6CC;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--green);letter-spacing:.04em}
-.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);
-  cursor:pointer;transition:color .2s}
-.nav-back:hover{color:var(--green)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);transition:opacity .2s}
-.nav-links a:hover{opacity:.6}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-search{background:none;border:none;cursor:pointer;color:var(--green);padding:6px;font-size:18px}
-/* PAGE HEADER */
+.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:color .2s}.nav-back:hover{color:var(--green)}
 .page-top{background:var(--beige);padding:56px 64px 48px}
 .page-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.page-breadcrumb a{color:var(--muted);transition:color .2s}
-.page-breadcrumb a:hover{color:var(--green)}
+.page-breadcrumb a{color:var(--muted);transition:color .2s}.page-breadcrumb a:hover{color:var(--green)}
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,64px);font-weight:900;color:var(--green);line-height:1.05;margin-bottom:12px}
-.page-title em{font-style:italic}
-.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
-/* SECTION */
-.section{padding:64px}
-.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
-/* CARD GRID */
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:52px}
-.card-body{padding:20px}
-.card-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);margin-bottom:6px}
-.card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.25}
-.card-meta{font-size:13px;color:var(--muted);line-height:1.5}
-/* FILTERS */
+.page-title em{font-style:italic}.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
+.section{padding:64px}.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .filter-btn{padding:8px 18px;border:1px solid var(--border);border-radius:99px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;background:none;transition:all .15s}
 .filter-btn.active,.filter-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
-/* SEARCH */
 .search-row{display:flex;gap:0;margin-bottom:32px;max-width:480px}
 .search-input{flex:1;padding:11px 16px;border:1px solid var(--border);border-right:none;font-family:'Inter',sans-serif;font-size:14px;outline:none;background:var(--beige)}
 .search-btn{padding:11px 20px;background:var(--green);color:#fff;border:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-/* BTN */
 .btn{display:inline-block;padding:13px 32px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:none}
 .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:var(--green2)}
 .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}.btn-outline:hover{background:var(--green);color:#fff}
-/* FORM */
-.form-group{margin-bottom:20px}
-.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;border-radius:0;transition:border-color .2s}
+.form-group{margin-bottom:20px}.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green)}
-.form-textarea{min-height:120px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-/* SOCIAL CTA */
-.social-cta{background:var(--green);padding:48px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.social-cta-text{color:rgba(255,255,255,.9);font-family:'Playfair Display',serif;font-size:24px;font-weight:700}
-.social-btns{display:flex;gap:10px}
-.social-btn-pill{display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s}
-.social-btn-pill:hover{background:rgba(255,255,255,.2)}
-/* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px}
-.footer-top{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px}
-.footer-logo{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px}
-.footer-col-title{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
-.footer-links a:hover{color:var(--green-light)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)}
-.footer-socs{display:flex;gap:8px}
-.footer-soc{width:32px;height:32px;border:1px solid rgba(255,255,255,.15);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s}
-.footer-soc:hover{border-color:var(--green-light);color:var(--green-light)}
+.form-textarea{min-height:120px;resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+
+.pano{position:relative;height:560px;background:linear-gradient(160deg,#0C1A28 0%,#143040 40%,#1A4858 100%);overflow:hidden;display:flex;align-items:flex-end}
+.pano-sky{position:absolute;inset:0;background:linear-gradient(to bottom,#0A1828 0%,#1A3850 35%,#2A5870 60%,#C87040 85%,#E89050 100%)}
+.pano-buildings{position:absolute;bottom:0;left:0;right:0;height:45%}
+.pano-sil{position:absolute;bottom:0;background:var(--dark)}
+.pano-content{position:relative;z-index:5;padding:48px 64px;width:100%}
+.pano-stars{position:absolute;inset:0;z-index:1}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+
 </style>
 </head>
 <body><nav>
   <a href="cdm-redesign.html" class="nav-back">← Главная</a>
   <a href="cdm-redesign.html" class="nav-logo">ЦДМ</a>
-  <div class="nav-right">
-    <button class="nav-search" aria-label="Поиск">⌕</button>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button style="background:none;border:none;cursor:pointer;color:var(--green);font-size:18px" aria-label="Поиск">⌕</button>
   </div>
 </nav>
-<div class="page-top">
-  <div class="page-breadcrumb"><a href="cdm-redesign.html">Главная</a> › <span>Смотровая площадка</span></div>
-  <h1 class="page-title">Смотровая <em>площадка</em><br>и выставка <em>детства</em></h1>
-  <p class="page-sub">7 этаж ЦДМ — два уникальных пространства над Лубянской площадью</p>
-</div>
-<!-- Смотровая -->
-<div class="section" style="background:var(--green);color:#fff">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-    <div>
-      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--green-light);font-weight:600;margin-bottom:14px">7 этаж</div>
-      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:18px">Смотровая<br><em>площадка</em></div>
-      <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.65);margin-bottom:32px">Панорамный вид на Лубянскую площадь, Кремль и исторический центр Москвы с высоты ~40 метров.</p>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
-        <div style="display:flex;gap:12px;font-size:14px"><span>🕐</span><span style="color:rgba(255,255,255,.75)">Ежедневно <strong style="color:#fff">10:00 – 22:00</strong>, последний вход 21:30</span></div>
-        <div style="display:flex;gap:12px;font-size:14px"><span>🎟</span><span style="color:rgba(255,255,255,.75)">Взрослый — <strong style="color:#fff">от 400 руб.</strong>, дети до 14 — льготный, до 3 лет — бесплатно</span></div>
-        <div style="display:flex;gap:12px;font-size:14px"><span>📏</span><span style="color:rgba(255,255,255,.75)">Ограничения: с детьми до 3 лет только на руках</span></div>
+<!-- PANORAMA HERO -->
+<div class="pano">
+  <div class="pano-sky"></div>
+  <svg class="pano-buildings" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+  <!-- Kremlin towers -->
+  <rect x="80" y="120" width="40" height="180" fill="#0d1117"/>
+  <polygon points="80,120 100,80 120,120" fill="#0d1117"/>
+  <rect x="90" y="150" width="8" height="8" fill="#1a2535"/>
+  <rect x="110" y="150" width="8" height="8" fill="#1a2535"/>
+  <rect x="160" y="100" width="50" height="200" fill="#0d1117"/>
+  <polygon points="160,100 185,50 210,100" fill="#0d1117"/>
+  <rect x="170" y="130" width="10" height="10" fill="#1a2535"/>
+  <rect x="195" y="130" width="10" height="10" fill="#1a2535"/>
+  <!-- Stalin tower -->
+  <rect x="280" y="60" width="30" height="240" fill="#111820"/>
+  <rect x="265" y="90" width="60" height="20" fill="#111820"/>
+  <rect x="255" y="110" width="80" height="190" fill="#111820"/>
+  <polygon points="280,60 295,10 310,60" fill="#111820"/>
+  <!-- ЦДМ building -->
+  <rect x="500" y="40" width="120" height="260" fill="#0d1117"/>
+  <rect x="495" y="130" width="130" height="20" fill="#0d1117"/>
+  <rect x="490" y="150" width="140" height="150" fill="#0d1117"/>
+  <!-- Windows -->
+  <rect x="510" y="60" width="15" height="20" fill="#FFD870" opacity=".8"/>
+  <rect x="535" y="60" width="15" height="20" fill="#FFD870" opacity=".6"/>
+  <rect x="560" y="60" width="15" height="20" fill="#FFD870" opacity=".9"/>
+  <rect x="585" y="60" width="15" height="20" fill="#FFD870" opacity=".5"/>
+  <rect x="510" y="95" width="15" height="20" fill="#FFD870" opacity=".7"/>
+  <rect x="535" y="95" width="15" height="20" fill="#FFD870" opacity=".4"/>
+  <rect x="560" y="95" width="15" height="20" fill="#FFD870" opacity=".8"/>
+  <rect x="585" y="95" width="15" height="20" fill="#FFD870" opacity=".6"/>
+  <!-- Church domes -->
+  <rect x="700" y="140" width="25" height="160" fill="#0d1117"/>
+  <ellipse cx="712" cy="140" rx="15" ry="25" fill="#0d1117"/>
+  <rect x="740" y="150" width="20" height="150" fill="#0d1117"/>
+  <ellipse cx="750" cy="150" rx="12" ry="20" fill="#0d1117"/>
+  <!-- Modern towers -->
+  <rect x="850" y="30" width="45" height="270" fill="#111820"/>
+  <polygon points="850,30 872,0 895,30" fill="#111820"/>
+  <rect x="860" y="50" width="8" height="12" fill="#4A6A8A"/>
+  <rect x="875" y="50" width="8" height="12" fill="#4A6A8A"/>
+  <rect x="860" y="75" width="8" height="12" fill="#4A6A8A"/>
+  <rect x="875" y="75" width="8" height="12" fill="#4A6A8A"/>
+  <rect x="960" y="70" width="60" height="230" fill="#0d1117"/>
+  <rect x="975" y="90" width="10" height="15" fill="#4A6A8A"/>
+  <rect x="1000" y="90" width="10" height="15" fill="#4A6A8A"/>
+  <rect x="1080" y="100" width="40" height="200" fill="#111820"/>
+  <rect x="1120" y="120" width="60" height="180" fill="#0d1117"/>
+  <!-- Ground -->
+  <rect x="0" y="290" width="1200" height="10" fill="#0d1117"/>
+</svg>
+  <!-- Stars -->
+  <div class="pano-stars" id="panoStars"></div>
+  <div class="pano-content">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between">
+      <div>
+        <p style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(109,179,138,.8);margin-bottom:12px">7 этаж · ЦДМ на Лубянке</p>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,68px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:12px">Смотровая площадка<br><em style="color:var(--green-light)">и Музей детства</em></h1>
+        <p style="font-size:15px;color:rgba(255,255,255,.65);max-width:480px;line-height:1.6;margin-bottom:28px">Панорама Лубянской площади, Кремля и исторического центра Москвы — с крыши первого детского магазина страны.</p>
+        <div style="display:flex;gap:12px">
+          <a href="#tickets" style="background:#fff;color:var(--dark);padding:13px 28px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Купить билет</a>
+          <a href="#museum" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:12px 28px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Выставка детства</a>
+        </div>
       </div>
-      <div style="display:flex;gap:12px">
-        <a href="#tickets" style="background:#fff;color:var(--green);padding:13px 28px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Купить билет</a>
-        <a href="#rules" style="background:transparent;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.3);padding:12px 28px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Правила посещения</a>
-      </div>
-    </div>
-    <div style="background:#14402A;border-radius:4px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
-      <div style="font-size:72px">🏙</div>
-      <div style="display:flex;gap:24px;text-align:center">
-        <div><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff">7</div><div style="font-size:11px;color:rgba(255,255,255,.5)">этаж</div></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff">360°</div><div style="font-size:11px;color:rgba(255,255,255,.5)">панорама</div></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff">~40м</div><div style="font-size:11px;color:rgba(255,255,255,.5)">высота</div></div>
+      <div style="display:flex;gap:24px;text-align:center;margin-bottom:8px">
+        <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#fff">7</div><div style="font-size:11px;color:rgba(255,255,255,.5)">этаж</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#fff">360°</div><div style="font-size:11px;color:rgba(255,255,255,.5)">панорама</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#fff">~40м</div><div style="font-size:11px;color:rgba(255,255,255,.5)">высота</div></div>
       </div>
     </div>
   </div>
 </div>
-<!-- Tickets section -->
-<div class="section" id="tickets" style="background:var(--beige)">
-  <div class="section-title">Билеты</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:640px">
-    <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
-      <div style="font-size:32px;margin-bottom:12px">🧑</div>
-      <div style="font-weight:700;margin-bottom:4px">Взрослый</div>
-      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green)">400 ₽</div>
-    </div>
-    <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
-      <div style="font-size:32px;margin-bottom:12px">👦</div>
-      <div style="font-weight:700;margin-bottom:4px">До 14 лет</div>
-      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green)">250 ₽</div>
-    </div>
-    <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
-      <div style="font-size:32px;margin-bottom:12px">👶</div>
-      <div style="font-weight:700;margin-bottom:4px">До 3 лет</div>
-      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--green)">0 ₽</div>
-    </div>
-  </div>
-  <a href="https://cdm-moscow.ru/visit" target="_blank" class="btn btn-green" style="display:inline-block;margin-top:24px">Купить онлайн →</a>
-</div>
-<!-- Музей детства -->
+
+<!-- INFO BLOCKS -->
 <div class="section">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px">
+    <div style="background:var(--beige);border-radius:4px;padding:24px">
+      <div style="font-size:28px;margin-bottom:12px">🕐</div>
+      <p style="font-weight:700;margin-bottom:6px">Время работы</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.5">Ежедневно 10:00 – 22:00<br>Последний вход в 21:30</p>
+    </div>
+    <div style="background:var(--beige);border-radius:4px;padding:24px">
+      <div style="font-size:28px;margin-bottom:12px">📍</div>
+      <p style="font-weight:700;margin-bottom:6px">Как добраться</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.5">Лифт с 1 этажа ЦДМ. Вход для посетителей смотровой — отдельная касса у лифта.</p>
+    </div>
+    <div style="background:var(--beige);border-radius:4px;padding:24px">
+      <div style="font-size:28px;margin-bottom:12px">👨‍👩‍👧</div>
+      <p style="font-weight:700;margin-bottom:6px">Правила посещения</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.5">Дети до 12 лет — только со взрослыми. Не перелезать через ограждения.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MUSEUM -->
+<div id="museum" style="background:var(--dark);padding:72px 64px">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
     <div>
-      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--green2);margin-bottom:14px">7 этаж · Постоянная экспозиция</div>
-      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--green);line-height:1.05;margin-bottom:18px">Выставка<br><em>детства</em></div>
-      <p style="font-size:15px;line-height:1.7;color:var(--muted);margin-bottom:24px">История ЦДМ и советского детства в предметах, фотографиях и документах. От открытия в 1957 году до наших дней.</p>
-      <div style="font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--muted);border-left:3px solid var(--green);padding:12px 16px;margin-bottom:28px;background:var(--beige)">«Лубянский пассаж → Детский мир → ЦДМ — история любимого места трёх поколений»</div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;font-size:14px">
-        <div style="display:flex;gap:12px"><span>🗓</span><span><strong>Постоянная экспозиция</strong> — открыта ежедневно, вход свободный</span></div>
-        <div style="display:flex;gap:12px"><span>🎧</span><span><strong>Аудиогид</strong> — QR-код при входе, RU/EN</span></div>
-        <div style="display:flex;gap:12px"><span>📸</span><span><strong>Фотосъёмка</strong> разрешена</span></div>
+      <p style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#C8A84A;margin-bottom:14px">7 этаж · Постоянная экспозиция</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,52px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:18px">Выставка<br><em style="color:#C8A84A">детства</em></h2>
+      <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.55);margin-bottom:24px">История ЦДМ и советского детства в предметах, фотографиях и документах. От открытия в 1957 году до наших дней.</p>
+      <div style="border-left:3px solid #C8A84A;padding:12px 16px;background:rgba(255,255,255,.04);margin-bottom:28px;font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.55)">«Лубянский пассаж → Детский мир → ЦДМ — история любимого места трёх поколений»</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
+        <div style="display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,.7)"><span>🗓</span>Постоянная экспозиция, открыта ежедневно, вход свободный</div>
+        <div style="display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,.7)"><span>🎧</span>Аудиогид — QR-код при входе, RU/EN</div>
+        <div style="display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,.7)"><span>📸</span>Фотосъёмка разрешена</div>
       </div>
-      <a href="https://audioguide.cdm-moscow.ru/" target="_blank" class="btn btn-green">Аудиогид →</a>
+      <a href="https://audioguide.cdm-moscow.ru/" target="_blank" style="background:#C8A84A;color:#0A0806;padding:13px 28px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Аудиогид →</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <div style="aspect-ratio:1;background:#D8CCB8;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:36px">🪆</div>
-      <div style="background:#C8D8CC;border-radius:3px;grid-row:span 2;display:flex;align-items:center;justify-content:center;font-size:36px">🏛</div>
-      <div style="aspect-ratio:1;background:#D8C8B8;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:36px">🚂</div>
+      <div style="aspect-ratio:1;background:#1A140C;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:40px">🪆</div>
+      <div style="background:#100C08;border-radius:3px;grid-row:span 2;display:flex;align-items:center;justify-content:center;font-size:40px">🏛</div>
+      <div style="aspect-ratio:1;background:#14100A;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:40px">🚂</div>
     </div>
   </div>
 </div>
-<div id="rules" class="section" style="background:var(--beige);padding-top:40px;padding-bottom:40px">
-  <div class="section-title" style="font-size:20px">Правила посещения смотровой</div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:640px;font-size:14px;color:var(--muted)">
-    <div style="display:flex;gap:10px">✅ Фотосъёмка разрешена</div>
-    <div style="display:flex;gap:10px">✅ Вход с домашними животными (на поводке)</div>
-    <div style="display:flex;gap:10px">❌ Запрещено перелезать через ограждения</div>
-    <div style="display:flex;gap:10px">❌ Курение запрещено</div>
-    <div style="display:flex;gap:10px">⚠ Дети до 12 лет — только со взрослыми</div>
-    <div style="display:flex;gap:10dp">⚠ В ненастную погоду площадка закрывается</div>
-  </div>
-</div>
-<footer>
-  <div class="footer-top">
-    <div><a href="cdm-redesign.html" class="footer-logo">ЦДМ</a>
-      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
-      <div class="footer-socs" style="margin-top:14px">
-        <a href="https://vk.com/cdmmoscow" class="footer-soc" target="_blank">VK</a>
-        <a href="https://t.me/cdm_moscow" class="footer-soc" target="_blank">TG</a>
+
+<!-- TICKETS — moved to bottom -->
+<div id="tickets" style="background:var(--cream);padding:72px 64px">
+  <div style="max-width:720px;margin:0 auto">
+    <p style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--green2);margin-bottom:14px">Единый билет</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green);margin-bottom:16px">Смотровая площадка<br>+ Выставка детства</h2>
+    <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:40px">Один билет даёт доступ сразу к двум пространствам: панорамной смотровой площадке и постоянной выставке истории ЦДМ на 7 этаже.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px">
+
+      <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">🧑</div>
+        <div style="font-weight:700;margin-bottom:8px;font-size:14px">Взрослый</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--green)">400 ₽</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px"></div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">👦</div>
+        <div style="font-weight:700;margin-bottom:8px;font-size:14px">До 14 лет</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--green)">250 ₽</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">льготный</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">👶</div>
+        <div style="font-weight:700;margin-bottom:8px;font-size:14px">До 3 лет</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--green)">0 ₽</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">бесплатно</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">👴</div>
+        <div style="font-weight:700;margin-bottom:8px;font-size:14px">Пенсионер</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--green)">200 ₽</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">со справкой</div>
       </div>
     </div>
-    <div><p class="footer-col-title">Посетителям</p>
-      <ul class="footer-links">
-        <li><a href="floors.html">План этажей</a></li>
-        <li><a href="shops.html">Магазины</a></li>
-        <li><a href="afisha.html">Афиша</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="services.html">Сервисы</a></li>
-      </ul>
+    <div style="background:var(--green-pale);border-radius:4px;padding:16px 20px;margin-bottom:28px;font-size:14px;color:var(--green);font-weight:500">
+      ✅ Цена включает: смотровая площадка + Выставка детства + аудиогид (QR)
     </div>
-    <div><p class="footer-col-title">Для бизнеса</p>
-      <ul class="footer-links">
-        <li><a href="tenants.html">Арендаторам</a></li>
-        <li><a href="partners.html">Партнёрам</a></li>
-        <li><a href="advertising.html">Реклама</a></li>
-        <li><a href="events-b2b.html">Мероприятия</a></li>
-      </ul>
+    <a href="https://cdm-moscow.ru/visit" target="_blank" class="btn btn-green" style="font-size:12px;padding:15px 40px">Купить билет онлайн →</a>
+  </div>
+</div>
+
+<!-- Social + Email Sub -->
+<section style="background:var(--green);padding:56px 64px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+    <div>
+      <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--green-light);margin-bottom:12px">Оставайтесь на связи</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;margin-bottom:14px">Подпишитесь<br>на наши новости</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.6">Новые коллекции, события и акции — первыми узнавайте о лучшем в ЦДМ</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://t.me/cdm_moscow" target="_blank" style="display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">✈ Telegram</a>
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">VK</a>
+      </div>
     </div>
-    <div><p class="footer-col-title">О ЦДМ</p>
-      <ul class="footer-links">
-        <li><a href="history.html">История ЦДМ</a></li>
-        <li><a href="observatory.html">Смотровая</a></li>
-        <li><a href="party.html">Организовать праздник</a></li>
-        <li><a href="news.html">Новости</a></li>
-      </ul>
+    <div>
+      <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:16px">Email-рассылка</p>
+      <div style="display:flex;gap:0">
+        <input type="email" placeholder="Ваш e-mail" style="flex:1;padding:14px 18px;border:none;background:rgba(255,255,255,.12);color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none" placeholder-style="color:rgba(255,255,255,.4)">
+        <button style="background:#fff;color:var(--green);border:none;padding:14px 24px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Подписаться</button>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:10px">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 ЦДМ на Лубянке · Дизайн создан в Супрематике</span>
+</section><footer style="background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px">
+    <div>
+      <a href="cdm-redesign.html" style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px">ЦДМ</a>
+      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">VK</a>
+        <a href="https://t.me/cdm_moscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">TG</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Посетителям</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="floors.html" style="font-size:13px;color:rgba(255,255,255,.45)">План этажей</a>
+        <a href="shops.html" style="font-size:13px;color:rgba(255,255,255,.45)">Магазины</a>
+        <a href="afisha.html" style="font-size:13px;color:rgba(255,255,255,.45)">Афиша</a>
+        <a href="contacts.html" style="font-size:13px;color:rgba(255,255,255,.45)">Контакты</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.45)">Сервисы</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Для бизнеса</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tenants.html" style="font-size:13px;color:rgba(255,255,255,.45)">Арендаторам</a>
+        <a href="partners.html" style="font-size:13px;color:rgba(255,255,255,.45)">Партнёрам</a>
+        <a href="advertising.html" style="font-size:13px;color:rgba(255,255,255,.45)">Реклама</a>
+        <a href="events-b2b.html" style="font-size:13px;color:rgba(255,255,255,.45)">Мероприятия</a>
+        <a href="press.html" style="font-size:13px;color:rgba(255,255,255,.45)">СМИ / Пресс-служба</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">О ЦДМ</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="history.html" style="font-size:13px;color:rgba(255,255,255,.45)">История ЦДМ</a>
+        <a href="observatory.html" style="font-size:13px;color:rgba(255,255,255,.45)">Смотровая</a>
+        <a href="party.html" style="font-size:13px;color:rgba(255,255,255,.45)">Организовать праздник</a>
+        <a href="news.html" style="font-size:13px;color:rgba(255,255,255,.45)">Новости</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)">
+    <span>© 2025 ЦДМ на Лубянке</span>
     <div style="display:flex;gap:20px"><a href="#" style="color:rgba(255,255,255,.25)">Политика конфиденциальности</a><a href="#" style="color:rgba(255,255,255,.25)">Правила</a></div>
   </div>
 </footer>
 </body></html>
+<script>
+// Animated stars
+const stars = document.getElementById('panoStars');
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*60}%;animation-delay:${Math.random()*3}s;opacity:${Math.random()*.8+.2};width:${Math.random()<.2?3:2}px;height:${Math.random()<.2?3:2}px`;
+  stars.appendChild(s);
+}
+</script>

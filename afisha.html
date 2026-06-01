@@ -6,166 +6,370 @@
 <title>Афиша мероприятий — ЦДМ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --beige:#F0EBE3;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;
-  --green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;
-  --muted:#7A7265;--border:#DDD6CC;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;
-  box-shadow:0 2px 20px rgba(0,0,0,.06)}
+
+:root{--beige:#F0EBE3;--beige2:#E4DDD4;--cream:#FAFAF8;--green:#1D5C3A;--green2:#2A7A50;--green-light:#6DB38A;--green-pale:#D4E8DC;--dark:#1A1A18;--muted:#7A7265;--border:#DDD6CC;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--green);letter-spacing:.04em}
-.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);
-  cursor:pointer;transition:color .2s}
-.nav-back:hover{color:var(--green)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);transition:opacity .2s}
-.nav-links a:hover{opacity:.6}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-search{background:none;border:none;cursor:pointer;color:var(--green);padding:6px;font-size:18px}
-/* PAGE HEADER */
+.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:color .2s}.nav-back:hover{color:var(--green)}
 .page-top{background:var(--beige);padding:56px 64px 48px}
 .page-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.page-breadcrumb a{color:var(--muted);transition:color .2s}
-.page-breadcrumb a:hover{color:var(--green)}
+.page-breadcrumb a{color:var(--muted);transition:color .2s}.page-breadcrumb a:hover{color:var(--green)}
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,64px);font-weight:900;color:var(--green);line-height:1.05;margin-bottom:12px}
-.page-title em{font-style:italic}
-.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
-/* SECTION */
-.section{padding:64px}
-.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
-/* CARD GRID */
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:52px}
-.card-body{padding:20px}
-.card-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);margin-bottom:6px}
-.card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.25}
-.card-meta{font-size:13px;color:var(--muted);line-height:1.5}
-/* FILTERS */
+.page-title em{font-style:italic}.page-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
+.section{padding:64px}.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);margin-bottom:24px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .filter-btn{padding:8px 18px;border:1px solid var(--border);border-radius:99px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;background:none;transition:all .15s}
 .filter-btn.active,.filter-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
-/* SEARCH */
 .search-row{display:flex;gap:0;margin-bottom:32px;max-width:480px}
 .search-input{flex:1;padding:11px 16px;border:1px solid var(--border);border-right:none;font-family:'Inter',sans-serif;font-size:14px;outline:none;background:var(--beige)}
 .search-btn{padding:11px 20px;background:var(--green);color:#fff;border:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-/* BTN */
 .btn{display:inline-block;padding:13px 32px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:none}
 .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:var(--green2)}
 .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}.btn-outline:hover{background:var(--green);color:#fff}
-/* FORM */
-.form-group{margin-bottom:20px}
-.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
-.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;border-radius:0;transition:border-color .2s}
+.form-group{margin-bottom:20px}.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block}
+.form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--beige);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green)}
-.form-textarea{min-height:120px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-/* SOCIAL CTA */
-.social-cta{background:var(--green);padding:48px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.social-cta-text{color:rgba(255,255,255,.9);font-family:'Playfair Display',serif;font-size:24px;font-weight:700}
-.social-btns{display:flex;gap:10px}
-.social-btn-pill{display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s}
-.social-btn-pill:hover{background:rgba(255,255,255,.2)}
-/* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px}
-.footer-top{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px}
-.footer-logo{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px}
-.footer-col-title{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
-.footer-links a:hover{color:var(--green-light)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)}
-.footer-socs{display:flex;gap:8px}
-.footer-soc{width:32px;height:32px;border:1px solid rgba(255,255,255,.15);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s}
-.footer-soc:hover{border-color:var(--green-light);color:var(--green-light)}
+.form-textarea{min-height:120px;resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+
+/* Hero featured */
+.afisha-hero{background:var(--dark);position:relative;overflow:hidden;height:480px;display:grid;grid-template-columns:1fr 1fr}
+.ah-slide{display:none;grid-column:1/-1;grid-row:1;position:absolute;inset:0;align-items:flex-end;padding:56px 64px}
+.ah-slide.active{display:flex}
+.ah-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:140px;opacity:.25}
+.ah-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 60%)}
+.ah-content{position:relative;z-index:2;max-width:560px}
+.ah-tag{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green-light);margin-bottom:12px}
+.ah-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:12px}
+.ah-meta{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:24px}
+.ah-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--dark);padding:12px 24px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.ah-btn:hover{background:var(--green-pale)}
+.ah-dots{position:absolute;bottom:20px;right:64px;display:flex;gap:8px;z-index:10}
+.ah-dot{width:28px;height:3px;border-radius:2px;border:none;cursor:pointer;background:rgba(255,255,255,.25);transition:all .25s;padding:0}
+.ah-dot.active{background:#fff;width:44px}
+/* Calendar */
+.cal-wrap{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.cal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.cal-month{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--dark)}
+.cal-nav{background:none;border:none;cursor:pointer;color:var(--green);font-size:18px;padding:4px 8px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-dow{padding:10px 0;text-align:center;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.cal-day{padding:10px 0;text-align:center;font-size:13px;cursor:pointer;border-radius:0;transition:background .15s;position:relative;border:none;background:none}
+.cal-day:hover{background:var(--green-pale)}
+.cal-day.has-event::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--green)}
+.cal-day.selected{background:var(--green);color:#fff;font-weight:700}
+.cal-day.selected::after{background:#fff}
+.cal-day.other-month{color:var(--muted);opacity:.4}
+/* Event cards */
+.ev-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative}
+.ev-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.ev-arch{height:260px;border-radius:999px 999px 0 0;overflow:hidden;margin:0 20px}
+.ev-arch-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative}
+.ev-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 50%);padding:20px 16px 16px}
+.ev-nav-btn{position:absolute;bottom:12px;right:12px;width:36px;height:36px;background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;border:1px solid rgba(255,255,255,.2);opacity:0;transition:opacity .2s}
+.ev-card:hover .ev-nav-btn{opacity:1}
+.ev-meta{padding:16px 20px 20px}
+.ev-date{font-size:11px;color:var(--muted);margin-bottom:4px}
+.ev-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.ev-tags{display:flex;gap:6px;flex-wrap:wrap}
+.ev-tag{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:2px;background:var(--green-pale);color:var(--green)}
+/* Empty state */
+.empty-state{text-align:center;padding:80px 40px;background:var(--beige);border-radius:4px}
+.empty-icon{font-size:64px;margin-bottom:20px}
+.empty-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.empty-sub{font-size:15px;color:var(--muted);margin-bottom:24px}
+
 </style>
 </head>
 <body><nav>
   <a href="cdm-redesign.html" class="nav-back">← Главная</a>
   <a href="cdm-redesign.html" class="nav-logo">ЦДМ</a>
-  <div class="nav-right">
-    <button class="nav-search" aria-label="Поиск">⌕</button>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button style="background:none;border:none;cursor:pointer;color:var(--green);font-size:18px" aria-label="Поиск">⌕</button>
   </div>
 </nav>
-<div class="page-top">
-  <div class="page-breadcrumb"><a href="cdm-redesign.html">Главная</a> › <span>Афиша мероприятий</span></div>
-  <h1 class="page-title">Афиша <em>мероприятий</em></h1>
-  <p class="page-sub">Концерты, мастер-классы, выставки и специальные события каждую неделю</p>
+<!-- HERO -->
+<div class="afisha-hero">
+  <div class="ah-slide active" style="background:linear-gradient(135deg,#0E1A14,#1A3020)">
+    <div class="ah-bg">🎭</div>
+    <div class="ah-grad"></div>
+    <div class="ah-content">
+      <p class="ah-tag">⭐ Главное событие лета</p>
+      <h1 class="ah-title">Фестиваль арт-куклы</h1>
+      <p class="ah-meta">25–28 мая · 17:00 · Центральный атриум, 1 этаж</p>
+      <a href="event-detail.html" class="ah-btn">Подробнее →</a>
+    </div>
+  </div>
+  <div class="ah-slide" style="background:linear-gradient(135deg,#1A0E1A,#2A1A30)">
+    <div class="ah-bg">🌸</div>
+    <div class="ah-grad"></div>
+    <div class="ah-content">
+      <p class="ah-tag">1 июня · Семейный праздник</p>
+      <h1 class="ah-title">День защиты детей</h1>
+      <p class="ah-meta">1 июня · 12:00–19:00 · Все этажи ЦДМ</p>
+      <a href="event-detail.html" class="ah-btn">Подробнее →</a>
+    </div>
+  </div>
+  <div class="ah-slide" style="background:linear-gradient(135deg,#1A1608,#2A2010)">
+    <div class="ah-bg">🎵</div>
+    <div class="ah-grad"></div>
+    <div class="ah-content">
+      <p class="ah-tag">Живая музыка</p>
+      <h1 class="ah-title">Концерт в атриуме</h1>
+      <p class="ah-meta">4 июля · 17:00 · Центральный атриум</p>
+      <a href="event-detail.html" class="ah-btn">Подробнее →</a>
+    </div>
+  </div>
+  <div class="ah-dots">
+    <button class="ah-dot active" onclick="goHero(0)"></button>
+    <button class="ah-dot" onclick="goHero(1)"></button>
+    <button class="ah-dot" onclick="goHero(2)"></button>
+  </div>
 </div>
+
+<!-- AFISHA MAIN -->
 <div class="section">
-  <div class="search-row"><input class="search-input" placeholder="Поиск мероприятий..."><button class="search-btn">Найти</button></div>
-  <div class="filters">
-    <button class="filter-btn active">Все</button>
-    <button class="filter-btn">Концерты</button>
-    <button class="filter-btn">Мастер-классы</button>
-    <button class="filter-btn">Открытия</button>
-    <button class="filter-btn">Выставки</button>
-    <button class="filter-btn">Для детей</button>
-    <button class="filter-btn">Для подростков</button>
-    <button class="filter-btn">Бесплатно</button>
-  </div>
-  <div class="card-grid">
-    <div class="card" onclick="location.href='event-detail.html'"><div class="card-img" style="background:linear-gradient(135deg,#C4B8D4,#9880B8)">🎭</div><div class="card-body"><div class="card-label">25 мая · 17:00</div><div class="card-title">Фестиваль арт-куклы</div><div class="card-meta">Уникальные авторские куклы со всей России. 1 этаж · Атриум</div></div></div>
-    <div class="card" onclick="location.href='event-detail.html'"><div class="card-img" style="background:linear-gradient(135deg,#B8D4C0,#7AAD8A)">🌸</div><div class="card-body"><div class="card-label">1 июня · 12:00</div><div class="card-title">День защиты детей</div><div class="card-meta">Большой праздник для всей семьи. Центральный атриум</div></div></div>
-    <div class="card" onclick="location.href='event-detail.html'"><div class="card-img" style="background:linear-gradient(135deg,#D4C4B0,#B09078)">🎨</div><div class="card-body"><div class="card-label">15 июня · 17:00</div><div class="card-title">Мастер-класс по рисованию</div><div class="card-meta">Для детей 5–12 лет. Арт-пространство, 3 этаж</div></div></div>
-    <div class="card" onclick="location.href='event-detail.html'"><div class="card-img" style="background:linear-gradient(135deg,#C0C8D8,#8898B8)">🎵</div><div class="card-body"><div class="card-label">4 июля · 17:00</div><div class="card-title">Концерт в атриуме</div><div class="card-meta">Живая музыка в Центральном атриуме ЦДМ</div></div></div>
-    <div class="card" onclick="location.href='event-detail.html'"><div class="card-img" style="background:linear-gradient(135deg,#D8C0B8,#B8887A)">🏆</div><div class="card-body"><div class="card-label">Постоянно</div><div class="card-title">Колесо Фортуны</div><div class="card-meta">Аттракцион на 3 этаже ЦДМ</div></div></div>
-    <div class="card" onclick="location.href='event-detail.html'"><div class="card-img" style="background:linear-gradient(135deg,#C8D8C8,#90B890)">📮</div><div class="card-body"><div class="card-label">Всё лето</div><div class="card-title">Открытка из ЦДМ</div><div class="card-meta">Бесплатная открытка с Почтой России. Лобби</div></div></div>
-  </div>
-</div>
-<div class="social-cta">
-  <div class="social-cta-text">Подпишитесь и узнавайте о событиях первыми</div>
-  <div class="social-btns">
-    <a href="https://t.me/cdm_moscow" class="social-btn-pill" target="_blank">✈ Telegram</a>
-    <a href="https://vk.com/cdmmoscow" class="social-btn-pill" target="_blank">VK</a>
-  </div>
-</div>
-<script>document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); }));</script>
-<footer>
-  <div class="footer-top">
-    <div><a href="cdm-redesign.html" class="footer-logo">ЦДМ</a>
-      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
-      <div class="footer-socs" style="margin-top:14px">
-        <a href="https://vk.com/cdmmoscow" class="footer-soc" target="_blank">VK</a>
-        <a href="https://t.me/cdm_moscow" class="footer-soc" target="_blank">TG</a>
+  <div style="display:grid;grid-template-columns:1fr 320px;gap:40px">
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px">
+        <h2 class="section-title" style="margin-bottom:0">Все события</h2>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active">Все</button>
+        <button class="filter-btn">Концерты</button>
+        <button class="filter-btn">Мастер-классы</button>
+        <button class="filter-btn">Открытия</button>
+        <button class="filter-btn">Выставки</button>
+        <button class="filter-btn">Для детей</button>
+        <button class="filter-btn">Бесплатно</button>
+      </div>
+      <!-- Event grid -->
+      <div id="evGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        
+    <div class="ev-card" onclick="location.href='event-detail.html'">
+      <div class="ev-arch"><div class="ev-arch-inner" style="background:linear-gradient(135deg,#C4B8D4,#9880B8)">
+        🎭
+        <div class="ev-overlay">
+          <div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:4px">25–28 мая · 17:00</div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2">Фестиваль арт-куклы</div>
+        </div>
+        <div class="ev-nav-btn">→</div>
+      </div></div>
+      <div class="ev-meta">
+        <p class="ev-date">25–28 мая · 17:00</p>
+        <p class="ev-title">Фестиваль арт-куклы</p>
+        <div class="ev-tags"><span class="ev-tag">Выставка</span><span class="ev-tag" style="background:var(--beige);color:var(--muted)">Атриум · 1 этаж</span></div>
       </div>
     </div>
-    <div><p class="footer-col-title">Посетителям</p>
-      <ul class="footer-links">
-        <li><a href="floors.html">План этажей</a></li>
-        <li><a href="shops.html">Магазины</a></li>
-        <li><a href="afisha.html">Афиша</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="services.html">Сервисы</a></li>
-      </ul>
+    <div class="ev-card" onclick="location.href='event-detail.html'">
+      <div class="ev-arch"><div class="ev-arch-inner" style="background:linear-gradient(135deg,#B8D4C0,#7AAD8A)">
+        🌸
+        <div class="ev-overlay">
+          <div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:4px">1 июня · 12:00</div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2">День защиты детей</div>
+        </div>
+        <div class="ev-nav-btn">→</div>
+      </div></div>
+      <div class="ev-meta">
+        <p class="ev-date">1 июня · 12:00</p>
+        <p class="ev-title">День защиты детей</p>
+        <div class="ev-tags"><span class="ev-tag">Праздник</span><span class="ev-tag" style="background:var(--beige);color:var(--muted)">Атриум · 1 этаж</span></div>
+      </div>
     </div>
-    <div><p class="footer-col-title">Для бизнеса</p>
-      <ul class="footer-links">
-        <li><a href="tenants.html">Арендаторам</a></li>
-        <li><a href="partners.html">Партнёрам</a></li>
-        <li><a href="advertising.html">Реклама</a></li>
-        <li><a href="events-b2b.html">Мероприятия</a></li>
-      </ul>
+    <div class="ev-card" onclick="location.href='event-detail.html'">
+      <div class="ev-arch"><div class="ev-arch-inner" style="background:linear-gradient(135deg,#D4C4B0,#B09078)">
+        🎨
+        <div class="ev-overlay">
+          <div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:4px">15 июня · 17:00</div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2">Мастер-класс по рисованию</div>
+        </div>
+        <div class="ev-nav-btn">→</div>
+      </div></div>
+      <div class="ev-meta">
+        <p class="ev-date">15 июня · 17:00</p>
+        <p class="ev-title">Мастер-класс по рисованию</p>
+        <div class="ev-tags"><span class="ev-tag">Мастер-класс</span><span class="ev-tag" style="background:var(--beige);color:var(--muted)">Арт-пространство · 3 эт.</span></div>
+      </div>
     </div>
-    <div><p class="footer-col-title">О ЦДМ</p>
-      <ul class="footer-links">
-        <li><a href="history.html">История ЦДМ</a></li>
-        <li><a href="observatory.html">Смотровая</a></li>
-        <li><a href="party.html">Организовать праздник</a></li>
-        <li><a href="news.html">Новости</a></li>
-      </ul>
+    <div class="ev-card" onclick="location.href='event-detail.html'">
+      <div class="ev-arch"><div class="ev-arch-inner" style="background:linear-gradient(135deg,#C0C8D8,#8898B8)">
+        🎵
+        <div class="ev-overlay">
+          <div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:4px">4 июля · 17:00</div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2">Концерт в атриуме</div>
+        </div>
+        <div class="ev-nav-btn">→</div>
+      </div></div>
+      <div class="ev-meta">
+        <p class="ev-date">4 июля · 17:00</p>
+        <p class="ev-title">Концерт в атриуме</p>
+        <div class="ev-tags"><span class="ev-tag">Концерт</span><span class="ev-tag" style="background:var(--beige);color:var(--muted)">Атриум · 1 этаж</span></div>
+      </div>
+    </div>
+    <div class="ev-card" onclick="location.href='event-detail.html'">
+      <div class="ev-arch"><div class="ev-arch-inner" style="background:linear-gradient(135deg,#D8C0B8,#B8887A)">
+        🏆
+        <div class="ev-overlay">
+          <div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:4px">Постоянно</div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2">Колесо фортуны</div>
+        </div>
+        <div class="ev-nav-btn">→</div>
+      </div></div>
+      <div class="ev-meta">
+        <p class="ev-date">Постоянно</p>
+        <p class="ev-title">Колесо фортуны</p>
+        <div class="ev-tags"><span class="ev-tag">Развлечения</span><span class="ev-tag" style="background:var(--beige);color:var(--muted)">3 этаж</span></div>
+      </div>
+    </div>
+    <div class="ev-card" onclick="location.href='event-detail.html'">
+      <div class="ev-arch"><div class="ev-arch-inner" style="background:linear-gradient(135deg,#C8D8C8,#90B890)">
+        📮
+        <div class="ev-overlay">
+          <div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:4px">Всё лето</div>
+          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;line-height:1.2">Открытка из ЦДМ</div>
+        </div>
+        <div class="ev-nav-btn">→</div>
+      </div></div>
+      <div class="ev-meta">
+        <p class="ev-date">Всё лето</p>
+        <p class="ev-title">Открытка из ЦДМ</p>
+        <div class="ev-tags"><span class="ev-tag">Акция</span><span class="ev-tag" style="background:var(--beige);color:var(--muted)">Лобби · 1 этаж</span></div>
+      </div>
+    </div>
+      </div>
+      <!-- Empty state (hidden by default) -->
+      <div id="emptyState" class="empty-state" style="display:none">
+        <div class="empty-icon">📅</div>
+        <h3 class="empty-title">Мероприятий не найдено</h3>
+        <p class="empty-sub">Попробуйте другой фильтр или выберите другую дату</p>
+        <button class="btn btn-outline" onclick="resetFilters()">Сбросить фильтры</button>
+      </div>
+    </div>
+    <!-- Calendar sidebar -->
+    <div>
+      <h3 class="section-title" style="font-size:20px;margin-bottom:20px">Календарь</h3>
+      
+<div class="cal-wrap">
+  <div class="cal-head">
+    <button class="cal-nav" onclick="prevMonth()">‹</button>
+    <span class="cal-month" id="calMonthLabel">Июнь 2025</span>
+    <button class="cal-nav" onclick="nextMonth()">›</button>
+  </div>
+  <div class="cal-grid">
+    <div class="cal-dow">Пн</div><div class="cal-dow">Вт</div><div class="cal-dow">Ср</div>
+    <div class="cal-dow">Чт</div><div class="cal-dow">Пт</div><div class="cal-dow">Сб</div><div class="cal-dow">Вс</div>
+    <div id="calDays"></div>
+  </div>
+</div>
+      <div id="calEvents" style="margin-top:16px;display:flex;flex-direction:column;gap:8px"></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 ЦДМ на Лубянке · Дизайн создан в Супрематике</span>
+</div>
+
+<!-- Social + Email Sub -->
+<section style="background:var(--green);padding:56px 64px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+    <div>
+      <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--green-light);margin-bottom:12px">Оставайтесь на связи</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;margin-bottom:14px">Подпишитесь<br>на наши новости</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.6">Новые коллекции, события и акции — первыми узнавайте о лучшем в ЦДМ</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://t.me/cdm_moscow" target="_blank" style="display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">✈ Telegram</a>
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,.12);color:#fff;border-radius:2px;font-size:13px;font-weight:600;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">VK</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:16px">Email-рассылка</p>
+      <div style="display:flex;gap:0">
+        <input type="email" placeholder="Ваш e-mail" style="flex:1;padding:14px 18px;border:none;background:rgba(255,255,255,.12);color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none" placeholder-style="color:rgba(255,255,255,.4)">
+        <button style="background:#fff;color:var(--green);border:none;padding:14px 24px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Подписаться</button>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:10px">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности</p>
+    </div>
+  </div>
+</section><footer style="background:var(--dark);color:rgba(255,255,255,.5);padding:48px 64px 28px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:36px">
+    <div>
+      <a href="cdm-redesign.html" style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green-light);display:block;margin-bottom:10px">ЦДМ</a>
+      <p style="font-size:13px;line-height:1.6">Лубянская площадь, 3<br>Ежедневно 10:00 – 22:00</p>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <a href="https://vk.com/cdmmoscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">VK</a>
+        <a href="https://t.me/cdm_moscow" target="_blank" style="width:32px;height:32px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);transition:all .2s" onmouseover="this.style.color='#6DB38A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">TG</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Посетителям</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="floors.html" style="font-size:13px;color:rgba(255,255,255,.45)">План этажей</a>
+        <a href="shops.html" style="font-size:13px;color:rgba(255,255,255,.45)">Магазины</a>
+        <a href="afisha.html" style="font-size:13px;color:rgba(255,255,255,.45)">Афиша</a>
+        <a href="contacts.html" style="font-size:13px;color:rgba(255,255,255,.45)">Контакты</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.45)">Сервисы</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">Для бизнеса</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tenants.html" style="font-size:13px;color:rgba(255,255,255,.45)">Арендаторам</a>
+        <a href="partners.html" style="font-size:13px;color:rgba(255,255,255,.45)">Партнёрам</a>
+        <a href="advertising.html" style="font-size:13px;color:rgba(255,255,255,.45)">Реклама</a>
+        <a href="events-b2b.html" style="font-size:13px;color:rgba(255,255,255,.45)">Мероприятия</a>
+        <a href="press.html" style="font-size:13px;color:rgba(255,255,255,.45)">СМИ / Пресс-служба</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:14px">О ЦДМ</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="history.html" style="font-size:13px;color:rgba(255,255,255,.45)">История ЦДМ</a>
+        <a href="observatory.html" style="font-size:13px;color:rgba(255,255,255,.45)">Смотровая</a>
+        <a href="party.html" style="font-size:13px;color:rgba(255,255,255,.45)">Организовать праздник</a>
+        <a href="news.html" style="font-size:13px;color:rgba(255,255,255,.45)">Новости</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.25)">
+    <span>© 2025 ЦДМ на Лубянке</span>
     <div style="display:flex;gap:20px"><a href="#" style="color:rgba(255,255,255,.25)">Политика конфиденциальности</a><a href="#" style="color:rgba(255,255,255,.25)">Правила</a></div>
   </div>
 </footer>
 </body></html>
+<script>
+// Hero slider
+let heroIdx=0;
+const heroSlides=document.querySelectorAll('.ah-slide');
+const heroDots=document.querySelectorAll('.ah-dot');
+function goHero(n){heroSlides[heroIdx].classList.remove('active');heroDots[heroIdx].classList.remove('active');heroIdx=n;heroSlides[heroIdx].classList.add('active');heroDots[heroIdx].classList.add('active');}
+setInterval(()=>goHero((heroIdx+1)%heroSlides.length),5000);
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+}));
+function resetFilters(){document.querySelectorAll('.filter-btn')[0].click();}
+
+// Calendar
+const MONTHS=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const EVENT_DATES=[1,4,15,25,28];
+let calYear=2025,calMonth=5;
+function renderCal(){
+  document.getElementById('calMonthLabel').textContent=MONTHS[calMonth]+' '+calYear;
+  const first=new Date(calYear,calMonth,1).getDay()||7;
+  const days=new Date(calYear,calMonth+1,0).getDate();
+  let html='';
+  for(let i=1;i<first;i++) html+=`<button class="cal-day other-month">${new Date(calYear,calMonth,1-first+i).getDate()}</button>`;
+  for(let d=1;d<=days;d++){
+    const hasEv=EVENT_DATES.includes(d)?'has-event':'';
+    html+=`<button class="cal-day ${hasEv}" onclick="selectDay(${d})">${d}</button>`;
+  }
+  document.getElementById('calDays').innerHTML=html;
+}
+function selectDay(d){
+  document.querySelectorAll('.cal-day').forEach(x=>x.classList.remove('selected'));
+  event.target.classList.add('selected');
+}
+function prevMonth(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();}
+function nextMonth(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();}
+renderCal();
+</script>
